@@ -1,6 +1,10 @@
+import 'package:example_widget_testing/app/modules/home/root_app.dart';
+import 'package:example_widget_testing/app/modules/login/components/login_button.dart';
+import 'package:example_widget_testing/app/modules/login/components/password_textbox.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/language_dropdown.dart';
+import 'components/language_dropdown.dart';
+import 'components/username_textbox.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -16,6 +20,17 @@ class LoginPageState extends State<LoginPage> {
   int buttonColor = 0xff26A9FF;
 
   bool inputTextNotNull = false;
+
+  void checkInputNotNull() {
+    setState(() {
+      if (usernameController.text.length >= 2 &&
+          passwordController.text.length >= 2) {
+        inputTextNotNull = true;
+      } else {
+        inputTextNotNull = false;
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,133 +61,39 @@ class LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: width * .05,
                     ),
-                    Container(
-                      width: width * .90,
-                      height: width * .14,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffE8E8E8),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(5),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Center(
-                          child: TextField(
-                            onChanged: (text) {
-                              setState(() {
-                                if (usernameController.text.length >= 2 &&
-                                    passwordController.text.length >= 2) {
-                                  inputTextNotNull = true;
-                                } else {
-                                  inputTextNotNull = false;
-                                }
-                              });
-                            },
-                            controller: usernameController,
-                            style: TextStyle(
-                              fontSize: width * .040,
-                            ),
-                            decoration: const InputDecoration.collapsed(
-                              hintText: 'Phone number , email or username',
-                            ),
-                          ),
-                        ),
-                      ),
+                    UsernameTextbox(
+                      width: width,
+                      checkInputNotNull: checkInputNotNull,
+                      usernameController: usernameController,
                     ),
                     SizedBox(
                       height: width * .04,
                     ),
-                    Container(
-                      width: width * .90,
-                      height: width * .14,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffE8E8E8),
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 15),
-                        child: Center(
-                          child: TextField(
-                            onChanged: (text) {
-                              setState(() {
-                                if (usernameController.text.length >= 2 &&
-                                    passwordController.text.length >= 2) {
-                                  inputTextNotNull = true;
-                                } else {
-                                  inputTextNotNull = false;
-                                }
-                              });
-                            },
-                            controller: passwordController,
-                            obscureText: true,
-                            style: TextStyle(
-                              fontSize: width * .040,
-                            ),
-                            decoration: const InputDecoration.collapsed(
-                              hintText: 'Password',
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
+                    PasswordTextbox(
+                        width: width,
+                        checkInputNotNull: checkInputNotNull,
+                        passwordController: passwordController),
                     SizedBox(
                       height: width * .04,
                     ),
-                    inputTextNotNull
-                        ? GestureDetector(
-                            onLongPressStart: (s) {
-                              setState(() {
-                                buttonColor = 0xff78C9FF;
-                              });
-                            },
-                            onLongPressEnd: (s) {
-                              setState(() {
-                                buttonColor = 0xff26A9FF;
-                              });
-                            },
-                            onTap: () {
-                              debugPrint('Log In');
-                            },
-                            child: Container(
-                              width: width * .90,
-                              height: width * .14,
-                              decoration: BoxDecoration(
-                                color: Color(buttonColor),
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(5)),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'Log In',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: width * .040,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
+                    SizedBox(
+                      width: width * .90,
+                      height: width * .14,
+                      child: LoginButton(
+                        width: width,
+                        inputTextNotNull: inputTextNotNull,
+                        onPressed: () {
+                          // debugPrint('login');
+                          // navigate to Home Page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const RootApp(),
                             ),
-                          )
-                        : Container(
-                            width: width * .90,
-                            height: width * .14,
-                            decoration: const BoxDecoration(
-                              color: Color(0xff78C9FF),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5)),
-                            ),
-                            child: Center(
-                              child: Text(
-                                'Log In',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: width * .040,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                          ),
+                          );
+                        },
+                      ),
+                    ),
                     SizedBox(
                       height: width * .035,
                     ),
@@ -282,7 +203,7 @@ class LoginPageState extends State<LoginPage> {
                               debugPrint('Sign Up');
                             },
                             child: Text(
-                              'Sing up',
+                              'Sign up',
                               style: TextStyle(
                                 color: const Color(0xff00258B),
                                 fontSize: width * .040,
