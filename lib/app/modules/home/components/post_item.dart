@@ -13,16 +13,17 @@ class PostItem extends StatelessWidget {
   final String viewCount;
   final String dayAgo;
 
-  const PostItem(
-      {super.key,
-      required this.profileImg,
-      required this.name,
-      required this.postImg,
-      required this.caption,
-      required this.isLoved,
-      required this.likedBy,
-      required this.viewCount,
-      required this.dayAgo});
+  const PostItem({
+    super.key,
+    required this.profileImg,
+    required this.name,
+    required this.postImg,
+    required this.caption,
+    required this.isLoved,
+    required this.likedBy,
+    required this.viewCount,
+    required this.dayAgo,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -42,10 +43,10 @@ class PostItem extends StatelessWidget {
                       width: 40,
                       height: 40,
                       decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(profileImg),
-                              fit: BoxFit.cover)),
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                            image: NetworkImage(profileImg), fit: BoxFit.cover),
+                      ),
                     ),
                     const SizedBox(
                       width: 15,
@@ -73,8 +74,9 @@ class PostItem extends StatelessWidget {
           Container(
             height: 400,
             decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: NetworkImage(postImg), fit: BoxFit.cover)),
+              image: DecorationImage(
+                  image: NetworkImage(postImg), fit: BoxFit.cover),
+            ),
           ),
           const SizedBox(
             height: 10,
@@ -124,21 +126,28 @@ class PostItem extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 15, right: 15),
             child: RichText(
-                text: TextSpan(children: [
-              const TextSpan(
-                  text: "Liked by ",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-              TextSpan(
-                  text: "$likedBy ",
-                  style: const TextStyle(
-                      fontSize: 15, fontWeight: FontWeight.w700)),
-              const TextSpan(
-                  text: "and ",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500)),
-              const TextSpan(
-                  text: "Other",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700)),
-            ])),
+              text: TextSpan(
+                children: [
+                  const TextSpan(
+                    text: "Liked by ",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  ),
+                  TextSpan(
+                    text: "$likedBy ",
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.w700),
+                  ),
+                  const TextSpan(
+                    text: "and ",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  ),
+                  const TextSpan(
+                    text: "Other",
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                  ),
+                ],
+              ),
+            ),
           ),
           const SizedBox(
             height: 12,
@@ -189,10 +198,11 @@ class PostItem extends StatelessWidget {
                         width: 30,
                         height: 30,
                         decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            image: DecorationImage(
-                                image: NetworkImage(profileImg),
-                                fit: BoxFit.cover)),
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              image: NetworkImage(profileImg),
+                              fit: BoxFit.cover),
+                        ),
                       ),
                       const SizedBox(
                         width: 15,

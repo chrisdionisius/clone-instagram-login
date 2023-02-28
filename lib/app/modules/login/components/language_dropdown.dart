@@ -13,7 +13,7 @@ class LanguageDropdownState extends State<LanguageDropdown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
-      dropdownColor: Colors.white70,
+      dropdownColor: Colors.white,
       value: dropdownValue,
       icon: const Icon(Icons.arrow_drop_down),
       iconSize: 24,

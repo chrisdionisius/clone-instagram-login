@@ -1,4 +1,4 @@
-import 'package:example_widget_testing/app/modules/search/widgets/search_category_item.dart';
+import 'package:example_widget_testing/app/modules/search/components/search_category_item.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
 import 'package:example_widget_testing/core/values/constant/search_json.dart';
 import 'package:flutter/material.dart';

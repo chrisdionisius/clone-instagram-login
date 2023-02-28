@@ -1,5 +1,5 @@
-import 'package:example_widget_testing/app/modules/home/widget/post_item.dart';
-import 'package:example_widget_testing/app/modules/home/widget/story_item.dart';
+import 'package:example_widget_testing/app/modules/home/components/post_item.dart';
+import 'package:example_widget_testing/app/modules/home/components/story_item.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/colors.dart';
@@ -79,12 +79,16 @@ class HomePageState extends State<HomePage> {
                   ),
                 ),
                 Row(
-                    children: List.generate(stories.length, (index) {
-                  return StoryItem(
-                    img: stories[index]['img'],
-                    name: stories[index]['name'],
-                  );
-                })),
+                  children: List.generate(
+                    stories.length,
+                    (index) {
+                      return StoryItem(
+                        img: stories[index]['img'],
+                        name: stories[index]['name'],
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),
@@ -92,18 +96,21 @@ class HomePageState extends State<HomePage> {
             color: white.withOpacity(0.3),
           ),
           Column(
-            children: List.generate(posts.length, (index) {
-              return PostItem(
-                postImg: posts[index]['postImg'],
-                profileImg: posts[index]['profileImg'],
-                name: posts[index]['name'],
-                caption: posts[index]['caption'],
-                isLoved: posts[index]['isLoved'],
-                viewCount: posts[index]['commentCount'],
-                likedBy: posts[index]['likedBy'],
-                dayAgo: posts[index]['timeAgo'],
-              );
-            }),
+            children: List.generate(
+              posts.length,
+              (index) {
+                return PostItem(
+                  postImg: posts[index]['postImg'],
+                  profileImg: posts[index]['profileImg'],
+                  name: posts[index]['name'],
+                  caption: posts[index]['caption'],
+                  isLoved: posts[index]['isLoved'],
+                  viewCount: posts[index]['commentCount'],
+                  likedBy: posts[index]['likedBy'],
+                  dayAgo: posts[index]['timeAgo'],
+                );
+              },
+            ),
           )
         ],
       ),

@@ -134,7 +134,6 @@ class RootAppState extends State<RootApp> {
                 bottomItems[index],
                 width: 27,
               ),
-              // const Icon(Icons.home),
             );
           }),
         ),

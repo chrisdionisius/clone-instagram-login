@@ -32,6 +32,17 @@ class LoginPageState extends State<LoginPage> {
     });
   }
 
+  void openHomePage() {
+    inputTextNotNull
+        ? Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const RootApp(),
+            ),
+          )
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -83,14 +94,7 @@ class LoginPageState extends State<LoginPage> {
                         width: width,
                         inputTextNotNull: inputTextNotNull,
                         onPressed: () {
-                          // debugPrint('login');
-                          // navigate to Home Page
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const RootApp(),
-                            ),
-                          );
+                          openHomePage();
                         },
                       ),
                     ),
