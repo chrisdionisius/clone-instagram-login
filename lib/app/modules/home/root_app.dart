@@ -1,4 +1,5 @@
 import 'package:example_widget_testing/app/modules/home/home_page.dart';
+import 'package:example_widget_testing/app/modules/account/account_page.dart';
 import 'package:example_widget_testing/app/modules/search/search_page.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -35,23 +36,23 @@ class RootAppState extends State<RootApp> {
         child: Text(
           "Upload Page",
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: white),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: white,
+          ),
         ),
       ),
       const Center(
         child: Text(
           "Activity Page",
           style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: white),
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: white,
+          ),
         ),
       ),
-      const Center(
-        child: Text(
-          "Account Page",
-          style: TextStyle(
-              fontSize: 20, fontWeight: FontWeight.bold, color: white),
-        ),
-      )
+      const AccountPage(),
     ];
     return IndexedStack(
       index: pageIndex,
@@ -64,7 +65,7 @@ class RootAppState extends State<RootApp> {
       return AppBar(
         // remove back button
         automaticallyImplyLeading: false,
-        backgroundColor: appBarColor,
+        backgroundColor: Colors.black,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const <Widget>[
@@ -79,7 +80,14 @@ class RootAppState extends State<RootApp> {
         ),
       );
     } else if (pageIndex == 1) {
-      return Container();
+      // return Container();
+      // return no appbar
+      return const PreferredSize(
+        preferredSize: Size.fromHeight(0),
+        child: SizedBox(
+          height: 20,
+        ),
+      );
     } else if (pageIndex == 2) {
       return AppBar(
         backgroundColor: appBarColor,
@@ -92,7 +100,7 @@ class RootAppState extends State<RootApp> {
       );
     } else {
       return AppBar(
-        backgroundColor: appBarColor,
+        backgroundColor: Colors.black,
         title: const Text("Account"),
       );
     }
@@ -118,7 +126,7 @@ class RootAppState extends State<RootApp> {
     ];
     return Container(
       width: double.infinity,
-      height: 80,
+      height: 55,
       decoration: const BoxDecoration(color: appFooterColor),
       child: Padding(
         padding:
