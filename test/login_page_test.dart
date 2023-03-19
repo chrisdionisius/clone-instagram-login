@@ -1,4 +1,5 @@
 import 'package:example_widget_testing/app/modules/login/components/language_dropdown.dart';
+import 'package:example_widget_testing/app/modules/login/components/login_button.dart';
 import 'package:example_widget_testing/app/modules/login/components/username_textbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -54,19 +55,35 @@ void main() {
     'Check if username textbox is present',
     (tester) async {
       // choose the widget to be tested
-      await tester.pumpWidget(
-        const MaterialApp(
-          home: Scaffold(
-              // body: UsernameTextbox(),
-              ),
-        ),
-      );
+      // await tester.pumpWidget(
+      //   MaterialApp(
+      //       // double width = MediaQuery.of(context).size.width,
+
+      //       // home: Scaffold(
+
+      //       //     body: UsernameTextbox(),
+      //       //     ),
+      //       ),
+      // );
 
       // execute the test
       // final dropdownButtonFinder = find.byType(DropdownButton<String>);
       // check if dropdownButtonFinder has icon
 
       // check the widget
+    },
+  );
+
+  testWidgets(
+    'Check if username textbox is present',
+    (tester) async {
+      await tester.pumpWidget(
+        const MaterialApp(
+          home: Scaffold(
+              // body: LoginButton(inputTextNotNull: 0, openHomePage: 0, buttonColor: 0, onPressed: () { void },),
+              ),
+        ),
+      );
     },
   );
 

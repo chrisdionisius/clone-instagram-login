@@ -1,5 +1,11 @@
-import 'package:example_widget_testing/app/modules/search/components/search_category_item.dart';
+import 'package:example_widget_testing/app/modules/account/components/account_name.dart';
+import 'package:example_widget_testing/app/modules/account/components/highlight_list.dart';
+import 'package:example_widget_testing/app/modules/account/components/information.dart';
+import 'package:example_widget_testing/app/modules/account/components/profile_buttons.dart';
+import 'package:example_widget_testing/app/modules/account/components/profile_pic.dart';
+import 'package:example_widget_testing/app/modules/post/post_page.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
+import 'package:example_widget_testing/core/values/constant/post_json.dart';
 import 'package:example_widget_testing/core/values/constant/search_json.dart';
 import 'package:flutter/material.dart';
 
@@ -16,70 +22,121 @@ class AccountPageState extends State<AccountPage> {
     return getBody();
   }
 
+  int pageIndex = 0;
+
   Widget getBody() {
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
-          SafeArea(
-            child: Row(
-              children: <Widget>[
-                const SizedBox(
-                  width: 15,
-                ),
-                Container(
-                  width: size.width - 30,
-                  height: 45,
+          Row(
+            children: const <Widget>[
+              ProfilePic(),
+              SizedBox(
+                width: 30,
+              ),
+              Expanded(
+                child: ProfileInformation(),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const AccountName(),
+          const SizedBox(
+            height: 10,
+          ),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: ProfileButtons(),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          const HighlightList(),
+          const SizedBox(
+            height: 10,
+          ),
+          // add instagram account tab
+          Row(
+            children: [
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    pageIndex = 0;
+                  });
+                },
+                child: Container(
+                  width: size.width / 2,
+                  height: 40,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: textFieldBackground),
-                  child: TextField(
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        prefixIcon: Icon(
-                          Icons.search,
-                          color: white.withOpacity(0.3),
-                        )),
-                    style: TextStyle(color: white.withOpacity(0.3)),
-                    cursorColor: white.withOpacity(0.3),
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.white,
+                        width: (pageIndex == 0) ? 2 : 0,
+                      ),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.grid_on_outlined,
+                      color: white,
+                    ),
                   ),
                 ),
-                const SizedBox(
-                  width: 15,
-                )
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Row(
-                children: List.generate(searchCategories.length, (index) {
-                  return CategoryStoryItem(
-                    name: searchCategories[index],
-                  );
-                }),
               ),
-            ),
-          ),
-          const SizedBox(
-            height: 15,
+              InkWell(
+                onTap: () {
+                  setState(() {
+                    pageIndex = 1;
+                  });
+                },
+                child: Container(
+                  width: size.width / 2,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: Colors.white,
+                        width: (pageIndex == 1) ? 2 : 0,
+                      ),
+                    ),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      // tagged account
+                      Icons.person_pin_outlined,
+                      color: white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Wrap(
-            spacing: 1,
-            runSpacing: 1,
-            children: List.generate(searchImages.length, (index) {
-              return Container(
-                width: (size.width - 3) / 3,
-                height: (size.width - 3) / 3,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: NetworkImage(searchImages[index]),
-                      fit: BoxFit.cover),
+            spacing: 1.5,
+            runSpacing: 1.5,
+            children: List.generate(posts.length, (index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const PostPage(),
+                    ),
+                  );
+                },
+                child: Container(
+                  width: (size.width - 3) / 3,
+                  height: (size.width - 3) / 3,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(
+                          posts[index]['postImg'],
+                        ),
+                        fit: BoxFit.cover),
+                  ),
                 ),
               );
             }),

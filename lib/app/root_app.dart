@@ -1,5 +1,6 @@
 import 'package:example_widget_testing/app/modules/home/home_page.dart';
 import 'package:example_widget_testing/app/modules/account/account_page.dart';
+import 'package:example_widget_testing/app/modules/post/post_page.dart';
 import 'package:example_widget_testing/app/modules/search/search_page.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
 import 'package:flutter/material.dart';
@@ -53,6 +54,7 @@ class RootAppState extends State<RootApp> {
         ),
       ),
       const AccountPage(),
+      const PostPage(),
     ];
     return IndexedStack(
       index: pageIndex,
@@ -101,7 +103,35 @@ class RootAppState extends State<RootApp> {
     } else {
       return AppBar(
         backgroundColor: Colors.black,
-        title: const Text("Account"),
+        // remove back button
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: const <Widget>[
+                Text(
+                  "YonoKarbu",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Icon(Icons.keyboard_arrow_down),
+              ],
+            ),
+            Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/images/upload_icon.svg",
+                  width: 27,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                // hamburger menu icon
+                const Icon(Icons.menu, size: 35),
+              ],
+            )
+          ],
+        ),
       );
     }
   }
@@ -127,7 +157,7 @@ class RootAppState extends State<RootApp> {
     return Container(
       width: double.infinity,
       height: 55,
-      decoration: const BoxDecoration(color: appFooterColor),
+      decoration: const BoxDecoration(color: Colors.black),
       child: Padding(
         padding:
             const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 15),
