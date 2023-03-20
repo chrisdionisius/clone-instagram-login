@@ -6,7 +6,6 @@ import 'package:example_widget_testing/app/modules/account/components/profile_pi
 import 'package:example_widget_testing/app/modules/post/post_page.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
 import 'package:example_widget_testing/core/values/constant/post_json.dart';
-import 'package:example_widget_testing/core/values/constant/search_json.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatefulWidget {

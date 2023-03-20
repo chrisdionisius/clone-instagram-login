@@ -1,5 +1,4 @@
-import 'package:example_widget_testing/app/modules/home/components/post_item.dart';
-import 'package:example_widget_testing/core/theme/colors.dart';
+import 'package:example_widget_testing/app/widgets/post_item.dart';
 import 'package:example_widget_testing/core/values/constant/post_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

@@ -1,4 +1,4 @@
-import 'package:example_widget_testing/app/modules/home/components/post_item.dart';
+import 'package:example_widget_testing/app/widgets/post_item.dart';
 import 'package:example_widget_testing/app/modules/home/components/story_item.dart';
 import 'package:flutter/material.dart';
 
