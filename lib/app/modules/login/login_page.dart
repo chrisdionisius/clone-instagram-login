@@ -1,3 +1,7 @@
+import 'package:example_widget_testing/app/modules/login/components/facebook_login.dart';
+import 'package:example_widget_testing/app/modules/login/components/forgot_access.dart';
+import 'package:example_widget_testing/app/modules/login/components/or_divider.dart';
+import 'package:example_widget_testing/app/modules/login/components/signup_section.dart';
 import 'package:example_widget_testing/app/root_app.dart';
 import 'package:example_widget_testing/app/modules/login/components/login_button.dart';
 import 'package:example_widget_testing/app/modules/login/components/password_textbox.dart';
@@ -87,139 +91,30 @@ class LoginPageState extends State<LoginPage> {
                     SizedBox(
                       height: width * .04,
                     ),
-                    SizedBox(
-                      width: width * .90,
-                      height: width * .14,
-                      child: LoginButton(
-                        width: width,
-                        inputTextNotNull: inputTextNotNull,
-                        onPressed: () {
-                          openHomePage();
-                        },
-                      ),
+                    LoginButton(
+                      width: width,
+                      inputTextNotNull: inputTextNotNull,
+                      onPressed: () {
+                        openHomePage();
+                      },
                     ),
                     SizedBox(
                       height: width * .035,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Forgot your login details? ',
-                          style: TextStyle(
-                            fontSize: width * .035,
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            debugPrint('Get help');
-                          },
-                          child: Text(
-                            'Get help',
-                            style: TextStyle(
-                              fontSize: width * .035,
-                              color: const Color(0xff002588),
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    ForgotAccess(width: width),
                     SizedBox(
                       height: width * .040,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          height: 1,
-                          width: width * .40,
-                          color: const Color(0xffA2A2A2),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          'OR',
-                          style: TextStyle(
-                            fontSize: width * .040,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: 1,
-                          width: width * .40,
-                          color: const Color(0xffA2A2A2),
-                        ),
-                      ],
+                    ORDivider(
+                      width: width,
                     ),
                     SizedBox(
                       height: width * .06,
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          'assets/facebook.png',
-                          height: width * .060,
-                        ),
-                        const SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          'Login with facebook',
-                          style: TextStyle(
-                            color: const Color(0xff1877f2),
-                            fontSize: width * .040,
-                            fontWeight: FontWeight.w800,
-                          ),
-                        ),
-                      ],
-                    ),
+                    FacebookLogin(width: width),
                   ],
                 ),
-                SizedBox(
-                  width: width,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        width: width,
-                        height: 1,
-                        color: const Color(0xffA2A2A2),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Don't have an account? ",
-                            style: TextStyle(
-                              fontSize: width * .040,
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              debugPrint('Sign Up');
-                            },
-                            child: Text(
-                              'Sign up',
-                              style: TextStyle(
-                                color: const Color(0xff00258B),
-                                fontSize: width * .040,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
+                SignupSection(width: width),
               ],
             ),
           ),
