@@ -18,6 +18,7 @@ class LoginButton extends StatelessWidget {
       width: width * .90,
       height: width * .14,
       child: ElevatedButton(
+        key: const Key('login_button'),
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: inputTextNotNull

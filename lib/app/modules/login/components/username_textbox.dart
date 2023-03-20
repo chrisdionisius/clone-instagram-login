@@ -27,6 +27,7 @@ class UsernameTextbox extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: TextField(
+            key: const Key('username_textfield'),
             onChanged: (text) {
               checkInputNotNull();
             },
