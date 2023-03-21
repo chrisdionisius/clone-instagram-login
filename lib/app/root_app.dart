@@ -65,25 +65,20 @@ class RootAppState extends State<RootApp> {
   Widget getAppBar() {
     if (pageIndex == 0) {
       return AppBar(
-        // remove back button
-        automaticallyImplyLeading: false,
+        key: const Key("app_bar_home"),
         backgroundColor: Colors.black,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const <Widget>[
-            Icon(Icons.camera_alt),
-            Text(
-              "Instagram",
-              style: TextStyle(fontFamily: 'Billabong', fontSize: 35),
-            ),
-            // SvgPicture.asset("assets/images/message_icon.svg",width: 30,),
-            Icon(Icons.send),
-          ],
+        leading: const Icon(Icons.camera_alt),
+        title: const Center(
+          child: Text(
+            "Instagram",
+            style: TextStyle(fontFamily: 'Billabong', fontSize: 35),
+          ),
         ),
+        actions: const <Widget>[
+          Icon(Icons.send),
+        ],
       );
     } else if (pageIndex == 1) {
-      // return Container();
-      // return no appbar
       return const PreferredSize(
         preferredSize: Size.fromHeight(0),
         child: SizedBox(
@@ -111,7 +106,7 @@ class RootAppState extends State<RootApp> {
             Row(
               children: const <Widget>[
                 Text(
-                  "YonoKarbu",
+                  "yonoplamir",
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Icon(Icons.keyboard_arrow_down),
@@ -165,6 +160,7 @@ class RootAppState extends State<RootApp> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: List.generate(bottomItems.length, (index) {
             return InkWell(
+              key: Key("bottom_item_$index"),
               onTap: () {
                 selectedTab(index);
               },
