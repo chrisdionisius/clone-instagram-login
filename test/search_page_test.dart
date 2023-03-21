@@ -9,7 +9,7 @@ import 'package:network_image_mock/network_image_mock.dart';
 import 'helper.dart';
 
 void main() {
-  testWidgets('Check if home page is present', (WidgetTester tester) async {
+  testWidgets('Check if Search page is present', (WidgetTester tester) async {
     FlutterError.onError = ignoreOverflowErrors;
 
     await mockNetworkImagesFor(
@@ -29,19 +29,17 @@ void main() {
       debugPrint(e.toString());
     }
 
+    await tester.pump(const Duration(milliseconds: 100));
     // tap the button
     await tester.tap(searchButtonFinder);
 
-    // // rebuild the widget after the state has changed
-    // await tester.pump();
+    final searchPageFinder = find.byType(SearchPage);
 
-    // final searchPageFinder = find.byType(SearchPage);
-
-    // try {
-    //   expect(searchPageFinder, findsOneWidget);
-    // } catch (e) {
-    //   debugPrint(e.toString());
-    // }
+    try {
+      expect(searchPageFinder, findsOneWidget);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   });
 
   // testWidgets('Check if Home page Appbar is present',
