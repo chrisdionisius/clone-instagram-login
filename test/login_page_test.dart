@@ -358,4 +358,122 @@ void main() {
       debugPrint('Test-82 failed: $e');
     }
   });
+
+  testWidgets('Check if signup text is present', (tester) async {
+    FlutterError.onError = ignoreOverflowErrors;
+    debugPrint('test 8');
+
+    await tester.pumpWidget(
+      const MaterialApp(
+        home: LoginPage(),
+      ),
+    );
+
+    final signupSectionFinder = find.byKey(const Key('signup_section'));
+    final signupSection = signupSectionFinder.evaluate().first.widget as Row;
+
+    try {
+      expect(signupSectionFinder, findsOneWidget);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-82 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupSection.children.length, 2);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-83 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupSection.mainAxisAlignment, MainAxisAlignment.center);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-84 failed:');
+      debugPrint(e.toString());
+    }
+
+    final signupText = signupSection.children[0] as Text;
+
+    try {
+      expect(signupText.runtimeType, Text);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-85 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupText.data, "Don't have an account? ");
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-86 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupText.style!.fontSize,
+          tester.binding.window.physicalSize.width * .040);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-87 failed:');
+      debugPrint(e.toString());
+    }
+
+    final signupButton = signupSection.children[1] as TextButton;
+
+    try {
+      expect(signupButton.runtimeType, TextButton);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-88 failed:');
+      debugPrint(e.toString());
+    }
+
+    final signupButtonText = signupButton.child as Text;
+
+    try {
+      expect(signupButtonText.runtimeType, Text);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-89 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupButtonText.data, 'Sign up');
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-90 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupButtonText.style!.color, const Color(0xff00258B));
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-91 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupButtonText.style!.fontWeight, FontWeight.bold);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-92 failed:');
+      debugPrint(e.toString());
+    }
+
+    try {
+      expect(signupButtonText.style!.fontSize,
+          tester.binding.window.physicalSize.width * .040);
+    } catch (e) {
+      point -= 1;
+      debugPrint('Test-93 failed:');
+      debugPrint(e.toString());
+    }
+  });
 }
