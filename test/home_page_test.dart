@@ -113,7 +113,5 @@ void main() {
     } catch (e) {
       debugPrint(e.toString());
     }
-
-    final storyItem = story.children[0] as StoryItem;
   });
 }

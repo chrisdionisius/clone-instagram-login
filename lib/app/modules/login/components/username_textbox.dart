@@ -32,8 +32,8 @@ class UsernameTextbox extends StatelessWidget {
               checkInputNotNull();
             },
             controller: usernameController,
-            style: TextStyle(
-              fontSize: width * .040,
+            style: const TextStyle(
+              fontSize: 15,
             ),
             decoration: const InputDecoration.collapsed(
               hintText: 'Phone number , email or username',

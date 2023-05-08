@@ -1,5 +1,3 @@
-import 'package:example_widget_testing/app/modules/home/components/story_item.dart';
-import 'package:example_widget_testing/app/modules/home/home_page.dart';
 import 'package:example_widget_testing/app/modules/search/search_page.dart';
 import 'package:example_widget_testing/app/root_app.dart';
 import 'package:flutter/material.dart';

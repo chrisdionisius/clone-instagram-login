@@ -30,8 +30,8 @@ class PasswordTextbox extends StatelessWidget {
             },
             controller: passwordController,
             obscureText: true,
-            style: TextStyle(
-              fontSize: width * .040,
+            style: const TextStyle(
+              fontSize: 15,
             ),
             decoration: const InputDecoration.collapsed(
               hintText: 'Password',

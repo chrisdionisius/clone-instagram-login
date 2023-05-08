@@ -9,27 +9,27 @@ class ForgotAccess extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(
+        const Text(
           'Forgot your login details? ',
           style: TextStyle(
-            fontSize: width * .035,
+            fontSize: 13,
             fontWeight: FontWeight.normal,
             color: Colors.black,
           ),
-          key: const Key('forgot_access_text'),
+          key: Key('forgot_access_text'),
         ),
         GestureDetector(
           onTap: () {
             debugPrint('Get help');
           },
-          child: Text(
+          child: const Text(
             'Get help',
             style: TextStyle(
-              fontSize: width * .035,
-              color: const Color(0xff002588),
+              fontSize: 13,
+              color: Color(0xff002588),
               fontWeight: FontWeight.bold,
             ),
-            key: const Key('get_help_text'),
+            key: Key('get_help_text'),
           ),
         ),
       ],
