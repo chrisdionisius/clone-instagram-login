@@ -12,6 +12,7 @@ class PostItem extends StatelessWidget {
   final String likedBy;
   final String viewCount;
   final String dayAgo;
+  final String userPhoto;
 
   const PostItem({
     super.key,
@@ -23,138 +24,137 @@ class PostItem extends StatelessWidget {
     required this.likedBy,
     required this.viewCount,
     required this.dayAgo,
+    required this.userPhoto,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
+      key: const Key('post_item_padding'),
       padding: const EdgeInsets.only(bottom: 10),
       child: Column(
+        key: const Key('post_item_column'),
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Padding(
+          Container(
+            key: const Key('post_item_user_info_container'),
             padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            margin: const EdgeInsets.only(bottom: 12),
             child: Row(
+              key: const Key('post_item_user_info_row'),
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Container(
-                      width: 40,
-                      height: 40,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                            image: NetworkImage(profileImg), fit: BoxFit.cover),
-                      ),
+                Container(
+                  key: const Key('post_item_user_profile_img_container'),
+                  width: 40,
+                  height: 40,
+                  margin: const EdgeInsets.only(right: 15),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                      image: NetworkImage(profileImg),
+                      fit: BoxFit.cover,
                     ),
-                    const SizedBox(
-                      width: 15,
+                  ),
+                ),
+                Expanded(
+                  key: const Key('post_item_user_name_expanded'),
+                  child: Text(
+                    key: const Key('post_item_user_name_text'),
+                    name,
+                    style: const TextStyle(
+                      color: white,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
                     ),
-                    Text(
-                      name,
-                      style: const TextStyle(
-                          color: white,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w500),
-                    )
-                  ],
+                  ),
                 ),
                 const Icon(
-                  // LineIcons.ellipsis_h,
+                  key: Key('post_item_user_more_icon'),
                   Icons.more_horiz,
                   color: white,
                 )
               ],
             ),
           ),
-          const SizedBox(
-            height: 12,
-          ),
           Container(
+            key: const Key('post_item_image_container'),
             height: 400,
+            margin: const EdgeInsets.only(bottom: 10),
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage(postImg), fit: BoxFit.cover),
+                image: NetworkImage(postImg),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15, top: 3),
+          Container(
+            key: const Key('post_item_actions_container'),
+            padding: const EdgeInsets.fromLTRB(15, 3, 15, 0),
+            margin: const EdgeInsets.only(bottom: 12),
             child: Row(
+              key: const Key('post_item_actions_row'),
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Row(
+                  key: const Key('post_item_actions_left_row'),
                   children: <Widget>[
-                    isLoved
-                        ? SvgPicture.asset(
-                            "assets/images/loved_icon.svg",
-                            width: 27,
-                          )
-                        : SvgPicture.asset(
-                            "assets/images/love_icon.svg",
-                            width: 27,
-                          ),
-                    const SizedBox(
-                      width: 20,
-                    ),
                     SvgPicture.asset(
-                      "assets/images/comment_icon.svg",
+                      key: const Key('post_item_actions_love_icon'),
+                      isLoved
+                          ? "assets/images/loved_icon.svg"
+                          : "assets/images/love_icon.svg",
                       width: 27,
                     ),
                     const SizedBox(
-                      width: 20,
+                        key: Key('post_item_actions_left_row_sized_box_1'),
+                        width: 20),
+                    SvgPicture.asset(
+                      "assets/images/comment_icon.svg",
+                      key: const Key('post_item_actions_comment_icon'),
+                      width: 27,
                     ),
+                    const SizedBox(
+                        key: Key('post_item_actions_left_row_sized_box_2'),
+                        width: 20),
                     SvgPicture.asset(
                       "assets/images/message_icon.svg",
+                      key: const Key('post_item_actions_message_icon'),
                       width: 27,
                     ),
                   ],
                 ),
                 SvgPicture.asset(
                   "assets/images/save_icon.svg",
+                  key: const Key('post_item_actions_save_icon'),
                   width: 27,
                 ),
               ],
             ),
           ),
-          const SizedBox(
-            height: 12,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.only(bottom: 12),
             child: RichText(
               text: TextSpan(
                 children: [
-                  const TextSpan(
-                    text: "Liked by ",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                  ),
                   TextSpan(
-                    text: "$likedBy ",
+                    text: "Liked by $likedBy and Other",
                     style: const TextStyle(
-                        fontSize: 15, fontWeight: FontWeight.w700),
-                  ),
-                  const TextSpan(
-                    text: "and ",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                  ),
-                  const TextSpan(
-                    text: "Other",
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          const SizedBox(
-            height: 12,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+          Container(
+            key: const Key('post_item_caption_container'),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.only(bottom: 12),
             child: RichText(
+              key: const Key('post_item_caption_rich_text'),
               text: TextSpan(
                 children: [
                   TextSpan(
@@ -171,12 +171,12 @@ class PostItem extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(
-            height: 12,
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+          Container(
+            key: const Key('post_item_view_comments_container'),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.only(bottom: 12),
             child: Text(
+              key: const Key('post_item_view_comments_text'),
               "View $viewCount comments",
               style: TextStyle(
                   color: white.withOpacity(0.5),
@@ -184,74 +184,82 @@ class PostItem extends StatelessWidget {
                   fontWeight: FontWeight.w500),
             ),
           ),
-          const SizedBox(
-            height: 12,
-          ),
-          Padding(
-              padding: const EdgeInsets.only(left: 15, right: 15),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Container(
-                        width: 30,
-                        height: 30,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                              image: NetworkImage(profileImg),
-                              fit: BoxFit.cover),
+          Container(
+            key: const Key('post_item_add_comment_container'),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            margin: const EdgeInsets.only(bottom: 12),
+            child: Row(
+              key: const Key('post_item_add_comment_row'),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Row(
+                  key: const Key('post_item_add_comment_left_row'),
+                  children: <Widget>[
+                    Container(
+                      key: const Key('post_item_add_comment_avatar_container'),
+                      width: 30,
+                      height: 30,
+                      margin: const EdgeInsets.only(right: 15),
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: NetworkImage(userPhoto),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Text(
-                        "Add a comment...",
-                        style: TextStyle(
-                            color: white.withOpacity(0.5),
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: <Widget>[
-                      const Text(
-                        "😂",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Text(
-                        "😍",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Icon(
-                        Icons.add_circle,
+                    ),
+                    Text(
+                      key: const Key('post_item_add_comment_text'),
+                      "Add a comment...",
+                      style: TextStyle(
                         color: white.withOpacity(0.5),
-                        size: 18,
-                      )
-                    ],
-                  )
-                ],
-              )),
-          const SizedBox(
-            height: 12,
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  key: const Key('post_item_add_comment_right_row'),
+                  children: <Widget>[
+                    const Text(
+                      key: Key('post_item_add_laugh_emoji_text'),
+                      "😂",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Text(
+                      key: Key('post_item_add_love_emoji_text'),
+                      "😍",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
+                      key: const Key('post_item_add_circle_icon'),
+                      Icons.add_circle,
+                      color: white.withOpacity(0.5),
+                      size: 18,
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15, right: 15),
+            key: const Key('post_item_day_ago_padding'),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Text(
+              key: const Key('post_item_day_ago_text'),
               dayAgo,
               style: TextStyle(
-                  color: white.withOpacity(0.5),
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500),
+                color: white.withOpacity(0.5),
+                fontSize: 15,
+                fontWeight: FontWeight.w500,
+              ),
             ),
           )
         ],

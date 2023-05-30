@@ -22,7 +22,9 @@ class HomePageState extends State<HomePage> {
 
   Widget getBody() {
     return SingleChildScrollView(
+      key: const Key('home_page_single_child_scroll_view'),
       child: Column(
+        key: const Key('home_page_column'),
         children: <Widget>[
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
@@ -45,9 +47,11 @@ class HomePageState extends State<HomePage> {
             ),
           ),
           Divider(
+            key: const Key('divider'),
             color: white.withOpacity(0.3),
           ),
           Column(
+            key: const Key('posts_column'),
             children: List.generate(
               posts.length,
               (index) {
@@ -60,6 +64,7 @@ class HomePageState extends State<HomePage> {
                   viewCount: posts[index]['commentCount'],
                   likedBy: posts[index]['likedBy'],
                   dayAgo: posts[index]['timeAgo'],
+                  userPhoto: profile,
                 );
               },
             ),

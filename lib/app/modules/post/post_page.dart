@@ -1,5 +1,6 @@
 import 'package:example_widget_testing/app/widgets/post_item.dart';
 import 'package:example_widget_testing/core/values/constant/post_json.dart';
+import 'package:example_widget_testing/core/values/constant/story_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -46,6 +47,7 @@ class PostPageState extends State<PostPage> {
                     viewCount: posts[index]['commentCount'],
                     likedBy: posts[index]['likedBy'],
                     dayAgo: posts[index]['timeAgo'],
+                    userPhoto: profile,
                   );
                 },
               ),
