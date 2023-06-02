@@ -150,27 +150,26 @@ class RootAppState extends State<RootApp> {
           : "assets/images/account_icon.svg",
     ];
     return Container(
+      key: const Key("bottom_navigation_bar_container"),
       width: double.infinity,
       height: 55,
-      decoration: const BoxDecoration(color: Colors.black),
-      child: Padding(
-        padding:
-            const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: List.generate(bottomItems.length, (index) {
-            return InkWell(
-              key: Key("bottom_item_$index"),
-              onTap: () {
-                selectedTab(index);
-              },
-              child: SvgPicture.asset(
-                bottomItems[index],
-                width: 27,
-              ),
-            );
-          }),
-        ),
+      color: Colors.black,
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 15),
+      child: Row(
+        key: const Key("bottom_navigation_bar_row"),
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: List.generate(bottomItems.length, (index) {
+          return InkWell(
+            key: Key("bottom_item_$index"),
+            onTap: () {
+              selectedTab(index);
+            },
+            child: SvgPicture.asset(
+              bottomItems[index],
+              width: 27,
+            ),
+          );
+        }),
       ),
     );
   }

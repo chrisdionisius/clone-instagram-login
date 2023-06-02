@@ -991,4 +991,81 @@ void main() {
       checkError(187, postItemDayAgoText.style!.fontWeight, FontWeight.w500);
     },
   );
+
+  testWidgets('Check if Bottom Navbar is present', (WidgetTester tester) async {
+    FlutterError.onError = ignoreOverflowErrors;
+
+    await mockNetworkImagesFor(
+      () => tester.pumpWidget(
+        const MaterialApp(
+          home: RootApp(),
+        ),
+      ),
+    );
+
+    int pageIndex = 0;
+
+    List bottomItems = [
+      pageIndex == 0
+          ? "assets/images/home_active_icon.svg"
+          : "assets/images/home_icon.svg",
+      pageIndex == 1
+          ? "assets/images/search_active_icon.svg"
+          : "assets/images/search_icon.svg",
+      pageIndex == 2
+          ? "assets/images/upload_active_icon.svg"
+          : "assets/images/upload_icon.svg",
+      pageIndex == 3
+          ? "assets/images/love_active_icon.svg"
+          : "assets/images/love_icon.svg",
+      pageIndex == 4
+          ? "assets/images/account_active_icon.svg"
+          : "assets/images/account_icon.svg",
+    ];
+
+    final bottomNavigationBarContainer =
+        find.byKey(const Key('bottom_navigation_bar_container'));
+    checkError(188, bottomNavigationBarContainer, findsOneWidget);
+
+    final bottomNavigationBarContainerFinder =
+        bottomNavigationBarContainer.evaluate().first.widget as Container;
+    checkError(
+        189, bottomNavigationBarContainerFinder.constraints!.maxHeight, 55);
+    checkError(190, bottomNavigationBarContainerFinder.constraints!.maxWidth,
+        double.infinity);
+    checkError(191, bottomNavigationBarContainerFinder.color, black);
+    checkError(192, bottomNavigationBarContainerFinder.padding,
+        const EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 15));
+
+    final bottomNavigationBarRowFinder =
+        find.byKey(const Key('bottom_navigation_bar_row'));
+    checkError(
+        193,
+        find.descendant(
+            of: bottomNavigationBarContainer,
+            matching: bottomNavigationBarRowFinder),
+        findsOneWidget);
+
+    final bottomNavigationBarRow =
+        bottomNavigationBarRowFinder.evaluate().first.widget as Row;
+    checkError(194, bottomNavigationBarRow.mainAxisAlignment,
+        MainAxisAlignment.spaceBetween);
+    checkError(195, bottomNavigationBarRow.children, hasLength(5));
+
+    bottomItems.asMap().forEach((index, value) {
+      final bottomItem = bottomNavigationBarRow.children[index] as InkWell;
+      checkError(196, bottomItem.onTap, isA<Function>());
+      checkError(197, bottomItem.child, isA<SvgPicture>());
+
+      final bottomItemSvgPicture = bottomItem.child as SvgPicture;
+      checkError(198, bottomItemSvgPicture.pictureProvider.runtimeType,
+          ExactAssetPicture);
+      checkError(199, bottomItemSvgPicture.width, 27);
+
+      final bottomItemSvgPicturePictureProvider =
+          bottomItemSvgPicture.pictureProvider as ExactAssetPicture;
+      checkError(200, bottomItemSvgPicturePictureProvider.assetName,
+          bottomItems[index]);
+    });
+  });
 }
