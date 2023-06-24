@@ -53,8 +53,11 @@ class RootAppState extends State<RootApp> {
           ),
         ),
       ),
-      const AccountPage(),
+      AccountPage(
+        onPostTabPressed: () => selectedTab(5),
+      ),
       const PostPage(),
+      // const SearchListPage()
     ];
     return IndexedStack(
       index: pageIndex,
@@ -87,15 +90,15 @@ class RootAppState extends State<RootApp> {
       );
     } else if (pageIndex == 2) {
       return AppBar(
-        backgroundColor: appBarColor,
+        backgroundColor: Colors.black,
         title: const Text("Upload"),
       );
     } else if (pageIndex == 3) {
       return AppBar(
-        backgroundColor: appBarColor,
+        backgroundColor: Colors.black,
         title: const Text("Activity"),
       );
-    } else {
+    } else if (pageIndex == 4) {
       return AppBar(
         backgroundColor: Colors.black,
         // remove back button
@@ -128,6 +131,11 @@ class RootAppState extends State<RootApp> {
           ],
         ),
       );
+    } else {
+      return AppBar(
+        backgroundColor: Colors.black,
+        title: const Text("Post"),
+      );
     }
   }
 
@@ -145,7 +153,7 @@ class RootAppState extends State<RootApp> {
       pageIndex == 3
           ? "assets/images/love_active_icon.svg"
           : "assets/images/love_icon.svg",
-      pageIndex == 4
+      (pageIndex == 4 || pageIndex == 5)
           ? "assets/images/account_active_icon.svg"
           : "assets/images/account_icon.svg",
     ];

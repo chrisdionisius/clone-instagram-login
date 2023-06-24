@@ -3,13 +3,16 @@ import 'package:example_widget_testing/app/modules/account/components/highlight_
 import 'package:example_widget_testing/app/modules/account/components/information.dart';
 import 'package:example_widget_testing/app/modules/account/components/profile_buttons.dart';
 import 'package:example_widget_testing/app/modules/account/components/profile_pic.dart';
-import 'package:example_widget_testing/app/modules/post/post_page.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
 import 'package:example_widget_testing/core/values/constant/post_json.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/post_thumbnail.dart';
+
 class AccountPage extends StatefulWidget {
-  const AccountPage({super.key});
+  const AccountPage({super.key, required this.onPostTabPressed});
+  // add final void function here
+  final void Function() onPostTabPressed;
 
   @override
   AccountPageState createState() => AccountPageState();
@@ -119,23 +122,11 @@ class AccountPageState extends State<AccountPage> {
             children: List.generate(posts.length, (index) {
               return InkWell(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const PostPage(),
-                    ),
-                  );
+                  widget.onPostTabPressed();
                 },
-                child: Container(
-                  width: (size.width - 3) / 3,
-                  height: (size.width - 3) / 3,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: NetworkImage(
-                          posts[index]['postImg'],
-                        ),
-                        fit: BoxFit.cover),
-                  ),
+                child: PostThumbnail(
+                  key: Key(posts[index]['postImg']),
+                  imageUrl: posts[index]['postImg'],
                 ),
               );
             }),

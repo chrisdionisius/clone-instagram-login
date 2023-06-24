@@ -49,20 +49,25 @@ class LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    double getAvailableHeight() {
+      return height -
+          MediaQuery.of(context).padding.top -
+          MediaQuery.of(context).padding.bottom;
+    }
 
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: MediaQuery.of(context).size.height - 90,
-            ),
+            constraints: BoxConstraints(minHeight: getAvailableHeight()),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: width,
                   alignment: Alignment.topCenter,
                   child: const LanguageDropdown(),
                 ),
@@ -71,26 +76,20 @@ class LoginPageState extends State<LoginPage> {
                   children: [
                     Image.asset(
                       'assets/instagram_logo.png',
-                      height: width * .20,
+                      width: width * .5,
                     ),
-                    SizedBox(
-                      height: width * .05,
-                    ),
+                    const SizedBox(height: 15),
                     UsernameTextbox(
                       width: width,
                       checkInputNotNull: checkInputNotNull,
                       usernameController: usernameController,
                     ),
-                    SizedBox(
-                      height: width * .04,
-                    ),
+                    const SizedBox(height: 10),
                     PasswordTextbox(
                         width: width,
                         checkInputNotNull: checkInputNotNull,
                         passwordController: passwordController),
-                    SizedBox(
-                      height: width * .04,
-                    ),
+                    const SizedBox(height: 10),
                     LoginButton(
                       width: width,
                       inputTextNotNull: inputTextNotNull,
@@ -98,18 +97,16 @@ class LoginPageState extends State<LoginPage> {
                         openHomePage();
                       },
                     ),
-                    SizedBox(
-                      height: width * .035,
+                    const SizedBox(
+                      height: 15,
                     ),
                     ForgotAccess(width: width),
-                    SizedBox(
-                      height: width * .040,
-                    ),
+                    const SizedBox(height: 15),
                     ORDivider(
                       width: width,
                     ),
-                    SizedBox(
-                      height: width * .06,
+                    const SizedBox(
+                      height: 20,
                     ),
                     FacebookLogin(width: width),
                   ],
