@@ -1,3 +1,4 @@
+import 'package:example_widget_testing/app/modules/home/home_page.dart';
 import 'package:example_widget_testing/app/modules/login/components/facebook_login.dart';
 import 'package:example_widget_testing/app/modules/login/components/forgot_access.dart';
 import 'package:example_widget_testing/app/modules/login/components/or_divider.dart';
@@ -41,7 +42,7 @@ class LoginPageState extends State<LoginPage> {
         ? Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const RootApp(),
+              builder: (context) => const HomePage(),
             ),
           )
         : null;

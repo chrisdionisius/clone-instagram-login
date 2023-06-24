@@ -44,7 +44,7 @@ void main() {
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
         const MaterialApp(
-          home: RootApp(),
+          home: HomePage(),
         ),
       ),
     );
@@ -998,7 +998,7 @@ void main() {
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
         const MaterialApp(
-          home: RootApp(),
+          home: HomePage(),
         ),
       ),
     );
