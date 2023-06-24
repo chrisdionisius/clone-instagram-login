@@ -1,5 +1,4 @@
 import 'package:example_widget_testing/app/modules/search/search_page.dart';
-import 'package:example_widget_testing/app/root_app.dart';
 import 'package:example_widget_testing/app/widgets/post_thumbnail.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
 import 'package:example_widget_testing/core/values/constant/search_json.dart';
@@ -276,15 +275,15 @@ void main() {
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
         const MaterialApp(
-          home: RootApp(),
+          home: SearchPage(),
         ),
       ),
     );
 
-    int pageIndex = 2;
+    int pageIndex = 1;
 
     final bottomItem2Finder = find.byKey(
-      const Key('bottom_item_2'),
+      const Key('bottom_item_1'),
     );
     checkError(29, bottomItem2Finder, findsOneWidget);
 
@@ -348,6 +347,10 @@ void main() {
       checkError(198, bottomItemSvgPicture.pictureProvider.runtimeType,
           ExactAssetPicture);
       checkError(199, bottomItemSvgPicture.width, 27);
+      final bottomItemSvgPicturePictureProvider =
+          bottomItemSvgPicture.pictureProvider as ExactAssetPicture;
+      checkError(200, bottomItemSvgPicturePictureProvider.assetName,
+          bottomItems[index]);
     });
   });
 }

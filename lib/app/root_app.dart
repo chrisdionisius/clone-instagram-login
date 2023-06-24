@@ -53,9 +53,7 @@ class RootAppState extends State<RootApp> {
           ),
         ),
       ),
-      AccountPage(
-        onPostTabPressed: () => selectedTab(5),
-      ),
+      const AccountPage(),
       const PostPage(),
       // const SearchListPage()
     ];

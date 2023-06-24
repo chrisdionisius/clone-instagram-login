@@ -9,7 +9,7 @@ class BottomNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void navigateToPage(int index) {
-      Navigator.pushNamed(context, navbarmenu[index].path!);
+      Navigator.pushNamed(context, navbarmenu[index]['path']!);
     }
 
     return Container(

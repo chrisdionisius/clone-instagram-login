@@ -10,9 +10,9 @@ import 'package:flutter/material.dart';
 import '../../widgets/post_thumbnail.dart';
 
 class AccountPage extends StatefulWidget {
-  const AccountPage({super.key, required this.onPostTabPressed});
+  const AccountPage({super.key});
   // add final void function here
-  final void Function() onPostTabPressed;
+  // final void Function() onPostTabPressed;
 
   @override
   AccountPageState createState() => AccountPageState();
@@ -122,7 +122,7 @@ class AccountPageState extends State<AccountPage> {
             children: List.generate(posts.length, (index) {
               return InkWell(
                 onTap: () {
-                  widget.onPostTabPressed();
+                  Navigator.pushNamed(context, '/post');
                 },
                 child: PostThumbnail(
                   key: Key(posts[index]['postImg']),
