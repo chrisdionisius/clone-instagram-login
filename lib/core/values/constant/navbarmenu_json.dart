@@ -1,10 +1,12 @@
+import '../../../app/data/models/navbar_menu.dart';
+
 List navbarmenu = [
   {
     "id": 1,
     "name": "Home",
     "active_icon": "assets/images/home_active_icon.svg",
     "inactive_icon": "assets/images/home_icon.svg",
-    "path": "/home"
+    "path": "/home",
   },
   {
     "id": 2,
@@ -22,10 +24,10 @@ List navbarmenu = [
   },
   {
     "id": 4,
-    "name": "Love",
+    "name": "Activity",
     "active_icon": "assets/images/love_active_icon.svg",
     "inactive_icon": "assets/images/love_icon.svg",
-    "path": "/love"
+    "path": "/activity"
   },
   {
     "id": 5,
@@ -35,3 +37,6 @@ List navbarmenu = [
     "path": "/account"
   }
 ];
+
+List<NavbarMenu> navbarMenuList =
+    navbarmenu.map((e) => NavbarMenu.fromJson(e)).toList();

@@ -1,9 +1,12 @@
+import 'package:flutter/material.dart';
+
 class NavbarMenu {
   int? id;
   String? name;
   String? activeIcon;
   String? inactiveIcon;
   String? path;
+  Widget? widget;
 
   NavbarMenu(
       {this.id, this.name, this.activeIcon, this.inactiveIcon, this.path});

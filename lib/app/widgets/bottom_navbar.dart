@@ -9,7 +9,7 @@ class BottomNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void navigateToPage(int index) {
-      Navigator.pushNamed(context, navbarmenu[index]['path']!);
+      Navigator.pushNamed(context, navbarMenuList[index].path!);
     }
 
     return Container(
@@ -21,7 +21,7 @@ class BottomNavbar extends StatelessWidget {
       child: Row(
         key: const Key("bottom_navigation_bar_row"),
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: List.generate(navbarmenu.length, (index) {
+        children: List.generate(navbarMenuList.length, (index) {
           return InkWell(
             key: Key("bottom_item_$index"),
             onTap: () {
@@ -29,8 +29,8 @@ class BottomNavbar extends StatelessWidget {
             },
             child: SvgPicture.asset(
               pageIndex == index
-                  ? navbarmenu[index]['active_icon']!
-                  : navbarmenu[index]['inactive_icon']!,
+                  ? navbarMenuList[index].activeIcon!
+                  : navbarMenuList[index].inactiveIcon!,
               width: 27,
             ),
           );
