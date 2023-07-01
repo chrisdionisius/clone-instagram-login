@@ -1,27 +1,34 @@
 import 'package:flutter/material.dart';
 
+import '../../../data/models/profile.dart';
+
 class AccountName extends StatelessWidget {
-  const AccountName({super.key});
+  const AccountName({super.key, required this.profile});
+  final Profile profile;
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: const Key('account_name_container'),
       width: double.infinity,
       padding: const EdgeInsets.symmetric(horizontal: 15),
+      margin: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const <Widget>[
+        children: <Widget>[
           Text(
-            "Yono Plamir",
-            style: TextStyle(
+            key: const Key('account_name_text'),
+            profile.name!,
+            style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w400,
               color: Colors.white,
             ),
           ),
           Text(
-            "NPC",
-            style: TextStyle(
+            key: const Key('account_name_bio'),
+            profile.bio!,
+            style: const TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.w400,
               color: Colors.white,

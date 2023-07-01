@@ -3,7 +3,6 @@ import 'package:example_widget_testing/app/modules/login/components/facebook_log
 import 'package:example_widget_testing/app/modules/login/components/forgot_access.dart';
 import 'package:example_widget_testing/app/modules/login/components/or_divider.dart';
 import 'package:example_widget_testing/app/modules/login/components/signup_section.dart';
-import 'package:example_widget_testing/app/root_app.dart';
 import 'package:example_widget_testing/app/modules/login/components/login_button.dart';
 import 'package:example_widget_testing/app/modules/login/components/password_textbox.dart';
 import 'package:flutter/material.dart';

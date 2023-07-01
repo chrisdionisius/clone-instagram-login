@@ -81,11 +81,7 @@ void main() {
       ),
     );
 
-    checkError(
-      4,
-      searchPageTextfieldContainer.constraints!.maxHeight,
-      45.0,
-    );
+    checkError(4, searchPageTextfieldContainer.constraints!.maxHeight, 45.0);
     checkError(
       5,
       searchPageTextfieldContainer.decoration,
@@ -97,9 +93,7 @@ void main() {
     checkError(
       6,
       searchPageTextfieldContainerDecoration.borderRadius,
-      const BorderRadius.all(
-        Radius.circular(10),
-      ),
+      const BorderRadius.all(Radius.circular(10)),
     );
     checkError(
       7,
@@ -121,43 +115,23 @@ void main() {
 
     final searchPageTextfield =
         searchPageTextfieldFinder.evaluate().single.widget as TextField;
-    checkError(
-      9,
-      searchPageTextfield.cursorColor,
-      white.withOpacity(0.3),
-    );
-    checkError(
-      10,
-      searchPageTextfield.style,
-      isA<TextStyle>(),
-    );
+    checkError(9, searchPageTextfield.cursorColor, white.withOpacity(0.3));
+    checkError(10, searchPageTextfield.style, isA<TextStyle>());
 
     final searchPageTextfieldStyle = searchPageTextfield.style as TextStyle;
-    checkError(
-      11,
-      searchPageTextfieldStyle.color,
-      white.withOpacity(0.3),
-    );
+    checkError(11, searchPageTextfieldStyle.color, white.withOpacity(0.3));
 
     checkError(12, searchPageTextfield.decoration, isA<InputDecoration>());
 
     final searchPageTextfieldDecoration =
         searchPageTextfield.decoration as InputDecoration;
-    checkError(
-      13,
-      searchPageTextfieldDecoration.border,
-      InputBorder.none,
-    );
+    checkError(13, searchPageTextfieldDecoration.border, InputBorder.none);
     checkError(14, searchPageTextfieldDecoration.prefixIcon, isA<Icon>());
 
     final searchPageTextfieldPrefixIcon =
         searchPageTextfieldDecoration.prefixIcon as Icon;
     checkError(15, searchPageTextfieldPrefixIcon.icon, Icons.search);
-    checkError(
-      16,
-      searchPageTextfieldPrefixIcon.color,
-      white.withOpacity(0.3),
-    );
+    checkError(16, searchPageTextfieldPrefixIcon.color, white.withOpacity(0.3));
 
     final searchPageWrapFinder = find.byKey(
       const Key('search_page_wrap'),
@@ -173,11 +147,7 @@ void main() {
 
     final searchPageWrap =
         searchPageWrapFinder.evaluate().single.widget as Wrap;
-    checkError(
-      18,
-      searchPageWrap.spacing,
-      1,
-    );
+    checkError(18, searchPageWrap.spacing, 1);
     checkError(19, searchPageWrap.runSpacing, 1);
     checkError(20, searchPageWrap.children.length, searchImages.length);
   });
