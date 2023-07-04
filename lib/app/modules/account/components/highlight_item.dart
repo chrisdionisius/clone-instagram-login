@@ -31,7 +31,7 @@ class HighlightItem extends StatelessWidget {
             child: Container(
               key: const Key('highlight_item_image_container'),
               decoration: BoxDecoration(
-                border: Border.all(color: black, width: 2),
+                border: Border.all(color: Colors.black, width: 2),
                 shape: BoxShape.circle,
                 image: DecorationImage(
                   image: NetworkImage(img),

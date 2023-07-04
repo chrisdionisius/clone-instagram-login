@@ -14,7 +14,7 @@ class ProfileInformation extends StatelessWidget {
         profileStats.length,
         (index) {
           return Column(
-            key: Key('profile_information_row_column_$index'),
+            key: Key('profile_information_column_$index'),
             children: <Widget>[
               Text(
                 key: Key('profile_information_${index}_amount_text'),

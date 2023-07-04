@@ -1,14 +1,14 @@
 import 'package:example_widget_testing/app/modules/account/components/highlight_item.dart';
-import 'package:example_widget_testing/core/values/constant/story_json.dart';
 import 'package:flutter/material.dart';
 
 class HighlightList extends StatelessWidget {
-  const HighlightList({super.key});
+  const HighlightList({super.key, required this.stories});
+  final List stories;
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      key: const Key('highlight_list'),
+      key: const Key('highlight_list_scroll_view'),
       padding: const EdgeInsets.only(left: 15, top: 10, bottom: 10),
       scrollDirection: Axis.horizontal,
       child: Row(

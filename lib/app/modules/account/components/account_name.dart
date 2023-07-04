@@ -14,6 +14,7 @@ class AccountName extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       margin: const EdgeInsets.symmetric(vertical: 10),
       child: Column(
+        key: const Key('account_name_column'),
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
@@ -26,7 +27,7 @@ class AccountName extends StatelessWidget {
             ),
           ),
           Text(
-            key: const Key('account_name_bio'),
+            key: const Key('account_bio_text'),
             profile.bio!,
             style: const TextStyle(
               fontSize: 15,

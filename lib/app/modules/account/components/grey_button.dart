@@ -8,7 +8,7 @@ class GreyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      key: key,
+      key: Key('${key}_elevated_button'),
       onPressed: () => {},
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(0, 30),

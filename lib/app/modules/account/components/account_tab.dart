@@ -13,7 +13,7 @@ class AccountTab extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Row(
-      key: key,
+      key: const Key("account_tab_row"),
       children: List.generate(
         tabs.length,
         (index) {

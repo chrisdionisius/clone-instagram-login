@@ -2,15 +2,15 @@ import 'package:example_widget_testing/app/modules/account/components/account_na
 import 'package:example_widget_testing/app/modules/account/components/account_tab.dart';
 import 'package:example_widget_testing/app/modules/account/components/highlight_list.dart';
 import 'package:example_widget_testing/app/modules/account/components/profile_buttons.dart';
-import 'package:example_widget_testing/app/modules/account/components/profile_pic.dart';
 import 'package:example_widget_testing/app/widgets/bottom_navbar.dart';
 import 'package:example_widget_testing/core/values/constant/post_json.dart';
+import 'package:example_widget_testing/core/values/constant/story_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../core/values/constant/profile_json.dart';
 import '../../data/models/profile.dart';
 import '../../widgets/post_thumbnail.dart';
-import 'components/profile_information.dart';
+import 'components/account_stat.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -76,25 +76,12 @@ class AccountPageState extends State<AccountPage> {
       body: ListView(
         key: const Key('account_page_listview'),
         children: <Widget>[
-          Row(
-            key: const Key('account_page_profile_row'),
-            children: <Widget>[
-              ProfilePic(pictureUrl: profile.profilePic!),
-              Expanded(
-                key: const Key('account_page_profile_row_expanded'),
-                child: ProfileInformation(profileStats: profile.stats!),
-              ),
-            ],
-          ),
-          AccountName(profile: profile),
-          const Padding(
-            key: Key('account_page_profile_buttons_padding'),
-            padding: EdgeInsets.symmetric(horizontal: 15),
-            child: ProfileButtons(),
-          ),
-          const HighlightList(),
+          AccountStat(key: const Key("account_stat"), profile: profile),
+          AccountName(key: const Key("account_name"), profile: profile),
+          const ProfileButtons(key: Key("profile_buttons")),
+          HighlightList(key: const Key("highlight_list"), stories: stories),
           AccountTab(
-            key: const Key("account_tab_row"),
+            key: const Key("account_tab"),
             updateIndex: updateIndex,
             pageIndex: pageIndex,
           ),
@@ -104,12 +91,12 @@ class AccountPageState extends State<AccountPage> {
             runSpacing: 1.5,
             children: List.generate(posts.length, (index) {
               return InkWell(
-                key: Key("account_post_${posts[index]}_inkwell"),
+                key: Key("account_post_inkwell_$index"),
                 onTap: () {
                   Navigator.pushNamed(context, '/post');
                 },
                 child: PostThumbnail(
-                  key: Key(posts[index]['postImg']),
+                  key: Key("account_post_thumbnail_$index"),
                   imageUrl: posts[index]['postImg'],
                 ),
               );
