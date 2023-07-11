@@ -23,8 +23,8 @@ void main() {
     FlutterError.onError = ignoreOverflowErrors;
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: SearchPage(),
+        MaterialApp(
+          home: SearchPage(searchPosts: searchImages),
         ),
       ),
     );
@@ -44,8 +44,8 @@ void main() {
     FlutterError.onError = ignoreOverflowErrors;
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: SearchPage(),
+        MaterialApp(
+          home: SearchPage(searchPosts: searchImages),
         ),
       ),
     );
@@ -156,8 +156,8 @@ void main() {
     FlutterError.onError = ignoreOverflowErrors;
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: SearchPage(),
+        MaterialApp(
+          home: SearchPage(searchPosts: searchImages),
         ),
       ),
     );
@@ -244,8 +244,8 @@ void main() {
 
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: SearchPage(),
+        MaterialApp(
+          home: SearchPage(searchPosts: searchImages),
         ),
       ),
     );

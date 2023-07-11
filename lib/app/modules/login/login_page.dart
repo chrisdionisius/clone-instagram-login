@@ -1,4 +1,3 @@
-import 'package:example_widget_testing/app/modules/home/home_page.dart';
 import 'package:example_widget_testing/app/modules/login/components/facebook_login.dart';
 import 'package:example_widget_testing/app/modules/login/components/forgot_access.dart';
 import 'package:example_widget_testing/app/modules/login/components/or_divider.dart';
@@ -37,14 +36,7 @@ class LoginPageState extends State<LoginPage> {
   }
 
   void openHomePage() {
-    inputTextNotNull
-        ? Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomePage(),
-            ),
-          )
-        : null;
+    inputTextNotNull ? Navigator.pushNamed(context, '/home') : null;
   }
 
   @override

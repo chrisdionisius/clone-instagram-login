@@ -4,12 +4,21 @@ import 'package:example_widget_testing/app/modules/home/components/story_item.da
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/colors.dart';
-import '../../../core/values/constant/post_json.dart';
-import '../../../core/values/constant/story_json.dart';
+// import '../../../core/values/constant/post_json.dart';
+// import '../../../core/values/constant/story_json.dart';
+// import '../../data/models/profile.dart';
+import '../../data/models/profile.dart';
 import '../../widgets/bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage(
+      {super.key,
+      required this.posts,
+      required this.stories,
+      required this.profileData});
+  final List posts;
+  final List stories;
+  final Map<String, dynamic> profileData;
 
   @override
   HomePageState createState() => HomePageState();
@@ -18,6 +27,7 @@ class HomePage extends StatefulWidget {
 class HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final Profile profile = Profile.fromJson(widget.profileData);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -47,11 +57,11 @@ class HomePageState extends State<HomePage> {
                   Row(
                     key: const Key('stories'),
                     children: List.generate(
-                      stories.length,
+                      widget.stories.length,
                       (index) {
                         return StoryItem(
-                          img: stories[index]['img'],
-                          name: stories[index]['name'],
+                          img: widget.stories[index]['img'],
+                          name: widget.stories[index]['name'],
                         );
                       },
                     ),
@@ -66,18 +76,18 @@ class HomePageState extends State<HomePage> {
             Column(
               key: const Key('posts_column'),
               children: List.generate(
-                posts.length,
+                widget.posts.length,
                 (index) {
                   return PostItem(
-                    postImg: posts[index]['postImg'],
-                    profileImg: posts[index]['profileImg'],
-                    name: posts[index]['name'],
-                    caption: posts[index]['caption'],
-                    isLoved: posts[index]['isLoved'],
-                    viewCount: posts[index]['commentCount'],
-                    likedBy: posts[index]['likedBy'],
-                    dayAgo: posts[index]['timeAgo'],
-                    userPhoto: profile,
+                    postImg: widget.posts[index]['postImg'],
+                    profileImg: widget.posts[index]['profileImg'],
+                    name: widget.posts[index]['name'],
+                    caption: widget.posts[index]['caption'],
+                    isLoved: widget.posts[index]['isLoved'],
+                    viewCount: widget.posts[index]['commentCount'],
+                    likedBy: widget.posts[index]['likedBy'],
+                    dayAgo: widget.posts[index]['timeAgo'],
+                    userPhoto: profile.profilePic!,
                   );
                 },
               ),

@@ -46,8 +46,12 @@ void main() {
 
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: AccountPage(),
+        MaterialApp(
+          home: AccountPage(
+            posts: posts,
+            stories: stories,
+            profileData: profileJson,
+          ),
         ),
       ),
     );
@@ -173,8 +177,12 @@ void main() {
 
     await mockNetworkImagesFor(
       () => widgetTester.pumpWidget(
-        const MaterialApp(
-          home: AccountPage(),
+        MaterialApp(
+          home: AccountPage(
+            posts: posts,
+            stories: stories,
+            profileData: profileJson,
+          ),
         ),
       ),
     );
@@ -2043,8 +2051,12 @@ void main() {
 
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: AccountPage(),
+        MaterialApp(
+          home: AccountPage(
+            posts: posts,
+            stories: stories,
+            profileData: profileJson,
+          ),
         ),
       ),
     );

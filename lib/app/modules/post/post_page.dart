@@ -4,14 +4,18 @@ import 'package:example_widget_testing/core/values/constant/post_json.dart';
 import 'package:example_widget_testing/core/values/constant/story_json.dart';
 import 'package:flutter/material.dart';
 
+import '../../data/models/post.dart';
+
 class PostPage extends StatefulWidget {
-  const PostPage({super.key});
+  final List posts;
+  const PostPage({super.key, required this.posts});
 
   @override
   PostPageState createState() => PostPageState();
 }
 
 class PostPageState extends State<PostPage> {
+  final List<Post> listPost = posts.map((e) => Post.fromJson(e)).toList();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,22 +28,19 @@ class PostPageState extends State<PostPage> {
         child: Column(
           children: <Widget>[
             Column(
-              children: List.generate(
-                posts.length,
-                (index) {
-                  return PostItem(
-                    postImg: posts[index]['postImg'],
-                    profileImg: posts[index]['profileImg'],
-                    name: posts[index]['name'],
-                    caption: posts[index]['caption'],
-                    isLoved: posts[index]['isLoved'],
-                    viewCount: posts[index]['commentCount'],
-                    likedBy: posts[index]['likedBy'],
-                    dayAgo: posts[index]['timeAgo'],
-                    userPhoto: profile,
-                  );
-                },
-              ),
+              children: listPost.map((post) {
+                return PostItem(
+                  postImg: post.postImg!,
+                  profileImg: post.profileImg!,
+                  name: post.name!,
+                  caption: post.caption!,
+                  isLoved: post.isLoved!,
+                  viewCount: post.commentCount!,
+                  likedBy: post.likedBy!,
+                  dayAgo: post.timeAgo!,
+                  userPhoto: profile,
+                );
+              }).toList(),
             )
           ],
         ),

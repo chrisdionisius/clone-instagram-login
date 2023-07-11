@@ -1,12 +1,13 @@
 import 'package:example_widget_testing/app/widgets/bottom_navbar.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
-import 'package:example_widget_testing/core/values/constant/search_json.dart';
+// import 'package:example_widget_testing/core/values/constant/search_json.dart';
 import 'package:flutter/material.dart';
 
 import '../../widgets/post_thumbnail.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  const SearchPage({super.key, required this.searchPosts});
+  final List searchPosts;
 
   @override
   SearchPageState createState() => SearchPageState();
@@ -53,7 +54,7 @@ class SearchPageState extends State<SearchPage> {
             key: const Key('search_page_wrap'),
             spacing: 1,
             runSpacing: 1,
-            children: searchImages.map((imageUrl) {
+            children: widget.searchPosts.map((imageUrl) {
               return PostThumbnail(
                 imageUrl: imageUrl,
               );

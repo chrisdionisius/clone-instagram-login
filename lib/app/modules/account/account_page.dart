@@ -3,17 +3,21 @@ import 'package:example_widget_testing/app/modules/account/components/account_ta
 import 'package:example_widget_testing/app/modules/account/components/highlight_list.dart';
 import 'package:example_widget_testing/app/modules/account/components/profile_buttons.dart';
 import 'package:example_widget_testing/app/widgets/bottom_navbar.dart';
-import 'package:example_widget_testing/core/values/constant/post_json.dart';
-import 'package:example_widget_testing/core/values/constant/story_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../core/values/constant/profile_json.dart';
 import '../../data/models/profile.dart';
 import '../../widgets/post_thumbnail.dart';
 import 'components/account_stat.dart';
 
 class AccountPage extends StatefulWidget {
-  const AccountPage({super.key});
+  const AccountPage(
+      {super.key,
+      required this.profileData,
+      required this.posts,
+      required this.stories});
+  final Map<String, dynamic> profileData;
+  final List posts;
+  final List stories;
 
   @override
   AccountPageState createState() => AccountPageState();
@@ -21,13 +25,14 @@ class AccountPage extends StatefulWidget {
 
 class AccountPageState extends State<AccountPage> {
   int pageIndex = 0;
-  Profile profile = Profile.fromJson(profileJson);
+
   void updateIndex(int index) {
     setState(() => pageIndex = index);
   }
 
   @override
   Widget build(BuildContext context) {
+    final Profile profile = Profile.fromJson(widget.profileData);
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -79,7 +84,8 @@ class AccountPageState extends State<AccountPage> {
           AccountStat(key: const Key("account_stat"), profile: profile),
           AccountName(key: const Key("account_name"), profile: profile),
           const ProfileButtons(key: Key("profile_buttons")),
-          HighlightList(key: const Key("highlight_list"), stories: stories),
+          HighlightList(
+              key: const Key("highlight_list"), stories: widget.stories),
           AccountTab(
             key: const Key("account_tab"),
             updateIndex: updateIndex,
@@ -89,7 +95,7 @@ class AccountPageState extends State<AccountPage> {
             key: const Key('account_page_post_wrap'),
             spacing: 1.5,
             runSpacing: 1.5,
-            children: List.generate(posts.length, (index) {
+            children: List.generate(widget.posts.length, (index) {
               return InkWell(
                 key: Key("account_post_inkwell_$index"),
                 onTap: () {
@@ -97,7 +103,7 @@ class AccountPageState extends State<AccountPage> {
                 },
                 child: PostThumbnail(
                   key: Key("account_post_thumbnail_$index"),
-                  imageUrl: posts[index]['postImg'],
+                  imageUrl: widget.posts[index]['postImg'],
                 ),
               );
             }),

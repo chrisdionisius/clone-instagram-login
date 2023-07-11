@@ -1,7 +1,7 @@
 import 'package:example_widget_testing/app/modules/home/components/story_item.dart';
 import 'package:example_widget_testing/app/modules/home/home_page.dart';
-import 'package:example_widget_testing/app/root_app.dart';
 import 'package:example_widget_testing/app/widgets/post_item.dart';
+import 'package:example_widget_testing/core/values/constant/profile_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -28,8 +28,9 @@ void main() {
 
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: RootApp(),
+        MaterialApp(
+          home: HomePage(
+              posts: posts, profileData: profileJson, stories: stories),
         ),
       ),
     );
@@ -43,8 +44,9 @@ void main() {
 
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: HomePage(),
+        MaterialApp(
+          home: HomePage(
+              posts: posts, profileData: profileJson, stories: stories),
         ),
       ),
     );
@@ -73,7 +75,13 @@ void main() {
     FlutterError.onError = ignoreOverflowErrors;
 
     await mockNetworkImagesFor(
-        () => tester.pumpWidget(const MaterialApp(home: RootApp())));
+      () => tester.pumpWidget(
+        MaterialApp(
+          home: HomePage(
+              posts: posts, profileData: profileJson, stories: stories),
+        ),
+      ),
+    );
 
     final storyFinder = find.byKey(const Key('stories'));
     checkError(11, storyFinder, findsOneWidget);
@@ -264,7 +272,12 @@ void main() {
   testWidgets('Check if divider is present', (WidgetTester tester) async {
     FlutterError.onError = ignoreOverflowErrors;
 
-    await tester.pumpWidget(const MaterialApp(home: HomePage()));
+    await tester.pumpWidget(
+      MaterialApp(
+        home:
+            HomePage(posts: posts, profileData: profileJson, stories: stories),
+      ),
+    );
 
     final dividerFinder = find.byKey(const Key('divider'));
     checkError(49, dividerFinder, findsOneWidget);
@@ -274,7 +287,12 @@ void main() {
   });
 
   testWidgets('Check if Posts Column is present', (WidgetTester tester) async {
-    await tester.pumpWidget(const MaterialApp(home: HomePage()));
+    await tester.pumpWidget(
+      MaterialApp(
+        home:
+            HomePage(posts: posts, profileData: profileJson, stories: stories),
+      ),
+    );
 
     final homePageColumnFinder = find.byKey(const Key('home_page_column'));
 
@@ -997,8 +1015,9 @@ void main() {
 
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
-        const MaterialApp(
-          home: HomePage(),
+        MaterialApp(
+          home: HomePage(
+              posts: posts, profileData: profileJson, stories: stories),
         ),
       ),
     );
