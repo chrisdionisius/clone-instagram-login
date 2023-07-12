@@ -1,5 +1,3 @@
-import 'package:example_widget_testing/app/modules/account/components/profile_information.dart';
-import 'package:example_widget_testing/app/modules/account/components/profile_pic.dart';
 import 'package:flutter/widgets.dart';
 
 import '../../../data/models/profile.dart';

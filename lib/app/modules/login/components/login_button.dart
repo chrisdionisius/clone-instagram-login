@@ -14,8 +14,6 @@ class LoginButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      key: Key('login_button_sizedbox'),
-    );
+    throw UnimplementedError();
   }
 }
