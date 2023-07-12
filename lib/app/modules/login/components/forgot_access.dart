@@ -7,32 +7,7 @@ class ForgotAccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Text(
-          'Forgot your login details? ',
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.normal,
-            color: Colors.black,
-          ),
-          key: Key('forgot_access_text'),
-        ),
-        GestureDetector(
-          onTap: () {
-            debugPrint('Get help');
-          },
-          child: const Text(
-            'Get help',
-            style: TextStyle(
-              fontSize: 13,
-              color: Color(0xff002588),
-              fontWeight: FontWeight.bold,
-            ),
-            key: Key('get_help_text'),
-          ),
-        ),
-      ],
+      key: const Key('forgot_access_row'),
     );
   }
 }

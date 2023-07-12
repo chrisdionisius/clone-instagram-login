@@ -15,25 +15,7 @@ class LoginButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width * .90,
-      height: width * .14,
-      child: ElevatedButton(
-        key: const Key('login_button'),
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: inputTextNotNull
-              ? const Color(0xff26A9FF)
-              : const Color(0xff78C9FF),
-        ),
-        child: Text(
-          'Log In',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: width * .040,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
+      key: Key('login_button_sizedbox'),
     );
   }
 }

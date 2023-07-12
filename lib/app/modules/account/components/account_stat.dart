@@ -13,19 +13,6 @@ class AccountStat extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       key: const Key('account_page_profile_row'),
-      children: <Widget>[
-        ProfilePic(
-          key: const Key("profile_pic"),
-          pictureUrl: profile.profilePic!,
-        ),
-        Expanded(
-          key: const Key('account_page_profile_information_expanded'),
-          child: ProfileInformation(
-            key: const Key("profile_information"),
-            profileStats: profile.stats!,
-          ),
-        ),
-      ],
     );
   }
 }

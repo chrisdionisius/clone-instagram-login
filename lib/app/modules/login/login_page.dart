@@ -1,13 +1,4 @@
-import 'package:example_widget_testing/app/modules/login/components/facebook_login.dart';
-import 'package:example_widget_testing/app/modules/login/components/forgot_access.dart';
-import 'package:example_widget_testing/app/modules/login/components/or_divider.dart';
-import 'package:example_widget_testing/app/modules/login/components/signup_section.dart';
-import 'package:example_widget_testing/app/modules/login/components/login_button.dart';
-import 'package:example_widget_testing/app/modules/login/components/password_textbox.dart';
 import 'package:flutter/material.dart';
-
-import 'components/language_dropdown.dart';
-import 'components/username_textbox.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -50,65 +41,6 @@ class LoginPageState extends State<LoginPage> {
           MediaQuery.of(context).padding.bottom;
     }
 
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: getAvailableHeight()),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  width: width,
-                  alignment: Alignment.topCenter,
-                  child: const LanguageDropdown(),
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      'assets/instagram_logo.png',
-                      width: width * .5,
-                    ),
-                    const SizedBox(height: 15),
-                    UsernameTextbox(
-                      width: width,
-                      checkInputNotNull: checkInputNotNull,
-                      usernameController: usernameController,
-                    ),
-                    const SizedBox(height: 10),
-                    PasswordTextbox(
-                        width: width,
-                        checkInputNotNull: checkInputNotNull,
-                        passwordController: passwordController),
-                    const SizedBox(height: 10),
-                    LoginButton(
-                      width: width,
-                      inputTextNotNull: inputTextNotNull,
-                      onPressed: () {
-                        openHomePage();
-                      },
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    ForgotAccess(width: width),
-                    const SizedBox(height: 15),
-                    ORDivider(
-                      width: width,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    FacebookLogin(width: width),
-                  ],
-                ),
-                SignupSection(width: width),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+    throw UnimplementedError();
   }
 }
