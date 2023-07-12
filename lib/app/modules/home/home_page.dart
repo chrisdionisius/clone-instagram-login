@@ -4,9 +4,6 @@ import 'package:example_widget_testing/app/modules/home/components/story_item.da
 import 'package:flutter/material.dart';
 
 import '../../../core/theme/colors.dart';
-// import '../../../core/values/constant/post_json.dart';
-// import '../../../core/values/constant/story_json.dart';
-// import '../../data/models/profile.dart';
 import '../../data/models/profile.dart';
 import '../../widgets/bottom_navbar.dart';
 
