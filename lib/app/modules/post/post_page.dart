@@ -19,17 +19,22 @@ class PostPageState extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('post_page_scaffold'),
       backgroundColor: Colors.black,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text("Post"),
       ),
       body: SingleChildScrollView(
+        key: const Key('post_page_single_child_scroll_view'),
         child: Column(
+          key: const Key('post_page_column'),
           children: <Widget>[
             Column(
+              key: const Key('post_page_column'),
               children: listPost.map((post) {
                 return PostItem(
+                  key: Key('post_item_${post.id}'), // add key for testing
                   postImg: post.postImg!,
                   profileImg: post.profileImg!,
                   name: post.name!,
@@ -45,7 +50,10 @@ class PostPageState extends State<PostPage> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavbar(pageIndex: 4),
+      bottomNavigationBar: const BottomNavbar(
+        key: Key('post_page_bottom_navbar'),
+        pageIndex: 4,
+      ),
     );
   }
 }

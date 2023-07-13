@@ -20,8 +20,6 @@ class LoginPageState extends State<LoginPage> {
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  int buttonColor = 0xff26A9FF;
-
   bool inputTextNotNull = false;
 
   void checkInputNotNull() {
@@ -51,7 +49,9 @@ class LoginPageState extends State<LoginPage> {
     }
 
     return Scaffold(
+      key: const Key('login_page_scaffold'),
       body: SafeArea(
+        key: const Key('login_page_safe_area'),
         child: SingleChildScrollView(
           key: const Key('login_page_scroll_view'),
           child: ConstrainedBox(

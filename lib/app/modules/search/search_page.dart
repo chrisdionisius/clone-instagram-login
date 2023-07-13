@@ -17,8 +17,10 @@ class SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('search_page_scaffold'),
       backgroundColor: Colors.black,
       appBar: const PreferredSize(
+        key: Key('search_page_app_bar_preferred_size'),
         preferredSize: Size.fromHeight(0),
         child: SizedBox(
           height: 20,
@@ -62,7 +64,10 @@ class SearchPageState extends State<SearchPage> {
           )
         ],
       ),
-      bottomNavigationBar: const BottomNavbar(pageIndex: 1),
+      bottomNavigationBar: const BottomNavbar(
+        key: Key('search_page_bottom_navbar'),
+        pageIndex: 1,
+      ),
     );
   }
 }

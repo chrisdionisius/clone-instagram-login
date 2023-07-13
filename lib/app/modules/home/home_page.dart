@@ -26,19 +26,25 @@ class HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     final Profile profile = Profile.fromJson(widget.profileData);
     return Scaffold(
+      key: const Key('home_page_scaffold'),
       backgroundColor: Colors.black,
       appBar: AppBar(
-        key: const Key("app_bar_home"),
+        key: const Key("home_page_appbar"),
         backgroundColor: Colors.black,
-        leading: const Icon(Icons.camera_alt),
+        leading: const Icon(
+          key: Key('home_page_camera_icon'),
+          Icons.camera_alt,
+        ),
         title: const Center(
+          key: Key('home_page_title_center'),
           child: Text(
+            key: Key('home_page_title_text'),
             "Instagram",
             style: TextStyle(fontFamily: 'Billabong', fontSize: 35),
           ),
         ),
         actions: const <Widget>[
-          Icon(Icons.send),
+          Icon(key: Key('home_page_send_icon'), Icons.send),
         ],
       ),
       body: SingleChildScrollView(
@@ -47,16 +53,19 @@ class HomePageState extends State<HomePage> {
           key: const Key('home_page_column'),
           children: <Widget>[
             SingleChildScrollView(
+              key: const Key('stories_scroll_view'),
               scrollDirection: Axis.horizontal,
               child: Row(
+                key: const Key('stories_row'),
                 children: <Widget>[
-                  const UserStory(),
+                  const UserStory(key: Key('user_story')),
                   Row(
-                    key: const Key('stories'),
+                    key: const Key('following_stories_row'),
                     children: List.generate(
                       widget.stories.length,
                       (index) {
                         return StoryItem(
+                          key: Key('story_item_$index'),
                           img: widget.stories[index]['img'],
                           name: widget.stories[index]['name'],
                         );
@@ -67,7 +76,7 @@ class HomePageState extends State<HomePage> {
               ),
             ),
             Divider(
-              key: const Key('divider'),
+              key: const Key('home_page_divider'),
               color: white.withOpacity(0.3),
             ),
             Column(
@@ -76,6 +85,7 @@ class HomePageState extends State<HomePage> {
                 widget.posts.length,
                 (index) {
                   return PostItem(
+                    key: Key('post_item_$index'),
                     postImg: widget.posts[index]['postImg'],
                     profileImg: widget.posts[index]['profileImg'],
                     name: widget.posts[index]['name'],
@@ -92,7 +102,10 @@ class HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: const BottomNavbar(pageIndex: 0),
+      bottomNavigationBar: const BottomNavbar(
+        key: Key('home_page_bottom_navbar'),
+        pageIndex: 0,
+      ),
     );
   }
 }

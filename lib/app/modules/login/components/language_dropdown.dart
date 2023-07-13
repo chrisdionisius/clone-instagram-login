@@ -9,7 +9,7 @@ class LanguageDropdown extends StatefulWidget {
 
 class LanguageDropdownState extends State<LanguageDropdown> {
   String dropdownValue = 'English';
-
+  final List<String> languages = ['English', 'Arabic', 'Italian', 'French'];
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
@@ -21,13 +21,9 @@ class LanguageDropdownState extends State<LanguageDropdown> {
       elevation: 10,
       style: const TextStyle(color: Colors.black54),
       underline: Container(),
-      onChanged: (String? newValue) {
-        setState(() {
-          dropdownValue = newValue!;
-        });
-      },
-      items: <String>['English', 'Arabic', 'Italian', 'French']
-          .map<DropdownMenuItem<String>>((String value) {
+      onChanged: (String? newValue) =>
+          setState(() => dropdownValue = newValue!),
+      items: languages.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           key: Key('language_dropdown_item_$value'),
           value: value,

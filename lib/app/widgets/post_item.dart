@@ -133,9 +133,11 @@ class PostItem extends StatelessWidget {
             ),
           ),
           Container(
+            key: const Key('post_item_likes_container'),
             padding: const EdgeInsets.symmetric(horizontal: 15),
             margin: const EdgeInsets.only(bottom: 12),
             child: RichText(
+              key: const Key('post_item_likes_rich_text'),
               text: TextSpan(
                 children: [
                   TextSpan(

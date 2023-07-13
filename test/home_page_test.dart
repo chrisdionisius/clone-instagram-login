@@ -51,7 +51,7 @@ void main() {
       ),
     );
 
-    final appBarFinder = find.byKey(const Key('app_bar_home'));
+    final appBarFinder = find.byKey(const Key('home_page_appbar'));
     checkError(2, appBarFinder, findsOneWidget);
 
     final appBar = appBarFinder.evaluate().first.widget as AppBar;
@@ -83,7 +83,7 @@ void main() {
       ),
     );
 
-    final storyFinder = find.byKey(const Key('stories'));
+    final storyFinder = find.byKey(const Key('following_stories_row'));
     checkError(11, storyFinder, findsOneWidget);
 
     final story = storyFinder.evaluate().first.widget as Row;
@@ -279,7 +279,7 @@ void main() {
       ),
     );
 
-    final dividerFinder = find.byKey(const Key('divider'));
+    final dividerFinder = find.byKey(const Key('home_page_divider'));
     checkError(49, dividerFinder, findsOneWidget);
 
     final divider = dividerFinder.evaluate().first.widget as Divider;
