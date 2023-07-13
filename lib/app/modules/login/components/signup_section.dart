@@ -8,9 +8,11 @@ class SignupSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      key: const Key('signup_section_column'),
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
+          key: const Key('signup_section_container'),
           width: width,
           height: 1,
           color: const Color(0xffA2A2A2),

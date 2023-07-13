@@ -7,6 +7,7 @@ class ForgotAccess extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      key: const Key('forgot_access_row'),
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         const Text(
@@ -19,6 +20,7 @@ class ForgotAccess extends StatelessWidget {
           key: Key('forgot_access_text'),
         ),
         GestureDetector(
+          key: const Key('get_help_gesture_detector'),
           onTap: () {
             debugPrint('Get help');
           },

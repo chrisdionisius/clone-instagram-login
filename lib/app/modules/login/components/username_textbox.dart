@@ -15,6 +15,7 @@ class UsernameTextbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: const Key('username_textbox_container'),
       width: width * .90,
       height: width * .14,
       decoration: const BoxDecoration(
@@ -24,8 +25,10 @@ class UsernameTextbox extends StatelessWidget {
         ),
       ),
       child: Padding(
+        key: const Key('username_textbox_padding'),
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
+          key: const Key('username_textbox_center'),
           child: TextField(
             key: const Key('username_textfield'),
             onChanged: (text) {

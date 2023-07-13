@@ -13,6 +13,7 @@ class LanguageDropdownState extends State<LanguageDropdown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
+      key: const Key('language_dropdown'),
       dropdownColor: Colors.white,
       value: dropdownValue,
       icon: const Icon(Icons.arrow_drop_down),
@@ -28,6 +29,7 @@ class LanguageDropdownState extends State<LanguageDropdown> {
       items: <String>['English', 'Arabic', 'Italian', 'French']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
+          key: Key('language_dropdown_item_$value'),
           value: value,
           child: Text(
             value,

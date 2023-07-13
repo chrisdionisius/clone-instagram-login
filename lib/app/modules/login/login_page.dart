@@ -53,36 +53,45 @@ class LoginPageState extends State<LoginPage> {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
+          key: const Key('login_page_scroll_view'),
           child: ConstrainedBox(
+            key: const Key('login_page_constrained_box'),
             constraints: BoxConstraints(minHeight: getAvailableHeight()),
             child: Column(
+              key: const Key('login_page_column'),
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
+                  key: const Key('login_page_language_dropdown_container'),
                   width: width,
                   alignment: Alignment.topCenter,
                   child: const LanguageDropdown(),
                 ),
                 Column(
+                  key: const Key('login_page_content_column'),
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Image.asset(
+                      key: const Key('login_page_instagram_logo'),
                       'assets/instagram_logo.png',
                       width: width * .5,
                     ),
                     const SizedBox(height: 15),
                     UsernameTextbox(
+                      key: const Key('login_page_username_textbox'),
                       width: width,
                       checkInputNotNull: checkInputNotNull,
                       usernameController: usernameController,
                     ),
                     const SizedBox(height: 10),
                     PasswordTextbox(
+                        key: const Key('login_page_password_textbox'),
                         width: width,
                         checkInputNotNull: checkInputNotNull,
                         passwordController: passwordController),
                     const SizedBox(height: 10),
                     LoginButton(
+                      key: const Key('login_page_login_button'),
                       width: width,
                       inputTextNotNull: inputTextNotNull,
                       onPressed: () {
@@ -92,18 +101,28 @@ class LoginPageState extends State<LoginPage> {
                     const SizedBox(
                       height: 15,
                     ),
-                    ForgotAccess(width: width),
+                    ForgotAccess(
+                      key: const Key('login_page_forgot_access'),
+                      width: width,
+                    ),
                     const SizedBox(height: 15),
                     ORDivider(
+                      key: const Key('login_page_or_divider'),
                       width: width,
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    FacebookLogin(width: width),
+                    FacebookLogin(
+                      key: const Key('login_page_facebook_login'),
+                      width: width,
+                    ),
                   ],
                 ),
-                SignupSection(width: width),
+                SignupSection(
+                  key: const Key('login_page_signup_section'),
+                  width: width,
+                ),
               ],
             ),
           ),

@@ -14,6 +14,7 @@ class PasswordTextbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: const Key('password_textbox_container'),
       width: width * .90,
       height: width * .14,
       decoration: const BoxDecoration(
@@ -21,6 +22,7 @@ class PasswordTextbox extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(5)),
       ),
       child: Padding(
+        key: const Key('password_textbox_padding'),
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Center(
           child: TextField(

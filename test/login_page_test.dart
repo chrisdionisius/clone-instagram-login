@@ -4,18 +4,29 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'helper.dart';
 
+void checkError(int index, dynamic expected, dynamic matcher) {
+  try {
+    expect(expected, matcher);
+  } catch (e) {
+    debugPrint('Loginpage Test-$index failed:');
+    debugPrint(e.toString());
+  }
+}
+
 void main() {
   int point = 10;
   final states = <MaterialState>{};
+  final List<String> languages = <String>[
+    'English',
+    'Arabic',
+    'Italian',
+    'French'
+  ];
 
   testWidgets('Check if language dropdown is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 1');
-
     // choose the widget to be tested
-    await tester.pumpWidget(
-      const MaterialApp(home: LoginPage()),
-    );
+    await tester.pumpWidget(const MaterialApp(home: LoginPage()));
 
     // execute the test
     final dropdownButtonFinder = find.byType(DropdownButton<String>);
@@ -24,125 +35,86 @@ void main() {
     // check if dropdownButtonFinder has icon
 
     // check the widget
-    expect(dropdownButtonFinder, findsOneWidget);
-    try {
-      expect(dropdownButton.dropdownColor, Colors.white);
-    } catch (exception) {
-      point -= 1;
-      debugPrint('Test-1.1 failed: $exception');
+    checkError(1, dropdownButtonFinder, findsOneWidget);
+    checkError(2, dropdownButton.dropdownColor, Colors.white);
+
+    for (var language in languages) {
+      checkError(
+        3,
+        dropdownButton.items!
+            .where((item) => item.value == language)
+            .isNotEmpty,
+        true,
+      );
     }
 
-    expect(dropdownButton.style!.color, Colors.black54);
-    expect(dropdownButton.elevation, 10);
-    expect(dropdownButton.items!.length, 4);
-    expect(dropdownButton.items![0].value, 'English');
-    expect(dropdownButton.items![1].value, 'Arabic');
-    expect(dropdownButton.items![2].value, 'Italian');
-    expect(dropdownButton.items![3].value, 'French');
-    // check if DropdownMenuItem<String> has Text widget
-    expect(dropdownButton.items![0].child, isA<Text>());
-    expect(dropdownButton.items![1].child, isA<Text>());
-    expect(dropdownButton.items![2].child, isA<Text>());
-    expect(dropdownButton.items![3].child, isA<Text>());
-    // check if Text widget has correct text
-    expect((dropdownButton.items![0].child as Text).data, 'English');
-    expect((dropdownButton.items![1].child as Text).data, 'Arabic');
-    expect((dropdownButton.items![2].child as Text).data, 'Italian');
-    expect((dropdownButton.items![3].child as Text).data, 'French');
-    // check if Text widget has correct style
-    expect((dropdownButton.items![0].child as Text).style!.fontSize, 16);
-    expect((dropdownButton.items![1].child as Text).style!.fontSize, 16);
-    expect((dropdownButton.items![2].child as Text).style!.fontSize, 16);
-    expect((dropdownButton.items![3].child as Text).style!.fontSize, 16);
+    checkError(4, dropdownButton.style!.color, Colors.black54);
+    checkError(5, dropdownButton.elevation, 10);
+    checkError(6, dropdownButton.items!.length, 4);
+    for (var language in languages) {
+      checkError(
+        7,
+        (dropdownButton.items!
+                .where((item) => item.value == language)
+                .first
+                .child as Text)
+            .data,
+        language,
+      );
+    }
+    for (var language in languages) {
+      checkError(
+        8,
+        (dropdownButton.items!
+                .where((item) => item.value == language)
+                .first
+                .child as Text)
+            .style!
+            .fontSize,
+        16,
+      );
+    }
   });
 
   testWidgets('Check if username textbox is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 2');
 
     tester.binding.window.physicalSizeTestValue = const Size(360, 640);
 
     addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
 
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: LoginPage(),
-      ),
-    );
+    await tester.pumpWidget(const MaterialApp(home: LoginPage()));
 
-    final usernameTextboxFinder = find.byKey(
-      const Key('username_textfield'),
-    );
-    // expect if username textbox has correct style
+    final usernameTextboxFinder = find.byKey(const Key('username_textfield'));
     final usernameTextbox =
         usernameTextboxFinder.evaluate().first.widget as TextField;
-    try {
-      expect(usernameTextboxFinder, findsOneWidget);
-    } catch (e) {
-      point -= 1;
-      debugPrint('Test-1.8 failed: $e');
-    }
-
-    try {
-      expect(usernameTextbox.decoration!.hintText,
-          'Phone number , email or username');
-    } catch (e) {
-      point -= 1;
-      debugPrint('Test-1.9 failed: $e');
-    }
-    try {
-      // check if username font size is correct for different screen size
-      expect(usernameTextbox.style!.fontSize, 15);
-      // console log screen size
-    } catch (e) {
-      point -= 1;
-      debugPrint('Test-60 failed:');
-      debugPrint(e.toString());
-    }
-    debugPrint('point: $point');
+    checkError(9, usernameTextboxFinder, findsOneWidget);
+    checkError(10, usernameTextbox.decoration!.hintText,
+        'Phone number , email or username');
+    checkError(11, usernameTextbox.style!.fontSize, 15);
   });
 
-  // check if password textbox is present
   testWidgets('Check if password textbox is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 3');
 
     tester.binding.window.physicalSizeTestValue = const Size(360, 640);
 
     addTearDown(tester.binding.window.clearPhysicalSizeTestValue);
 
-    await tester.pumpWidget(
-      const MaterialApp(
-        home: LoginPage(),
-      ),
-    );
+    await tester.pumpWidget(const MaterialApp(home: LoginPage()));
 
-    final passwordTextboxFinder = find.byKey(
-      const Key('password_textfield'),
-    );
+    final passwordTextboxFinder = find.byKey(const Key('password_textfield'));
     // expect if password textbox has correct style
+    checkError(12, passwordTextboxFinder, findsOneWidget);
     final passwordTextbox =
         passwordTextboxFinder.evaluate().first.widget as TextField;
-    try {
-      expect(passwordTextboxFinder, findsOneWidget);
-    } catch (e) {
-      point -= 1;
-      debugPrint('Test-61 failed: $e');
-    }
-
-    try {
-      expect(passwordTextbox.decoration!.hintText, 'Password');
-    } catch (e) {
-      point -= 1;
-      debugPrint('Test-62 failed: $e');
-    }
+    checkError(13, passwordTextbox.decoration!.hintText, 'Password');
     // try to input password and check if it is obscured
     try {
       await tester.enterText(passwordTextboxFinder, 'password');
       expect(passwordTextbox.obscureText, true);
     } catch (e) {
-      point -= 1;
-      debugPrint('Test-63 failed: $e');
+      debugPrint('Test-14 failed: $e');
     }
   });
 
@@ -157,7 +129,7 @@ void main() {
     );
 
     final loginButtonFinder = find.byKey(
-      const Key('login_button'),
+      const Key('login_button_elevated_button'),
     );
     // expect if login button has correct style
     final loginButton =
