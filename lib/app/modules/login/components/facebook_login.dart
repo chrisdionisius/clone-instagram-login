@@ -5,8 +5,6 @@ class FacebookLogin extends StatelessWidget {
   const FacebookLogin({super.key, required this.width});
   @override
   Widget build(BuildContext context) {
-    return Row(
-      key: const Key('facebook_login_row'),
-    );
+    throw UnimplementedError();
   }
 }

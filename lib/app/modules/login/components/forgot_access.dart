@@ -6,8 +6,6 @@ class ForgotAccess extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      key: const Key('forgot_access_row'),
-    );
+    throw UnimplementedError();
   }
 }

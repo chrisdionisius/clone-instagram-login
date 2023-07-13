@@ -7,8 +7,6 @@ class SignupSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      key: const Key('signup_section_column'),
-    );
+    throw UnimplementedError();
   }
 }

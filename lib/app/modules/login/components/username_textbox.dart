@@ -14,8 +14,6 @@ class UsernameTextbox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      key: const Key('username_textbox_container'),
-    );
+    throw UnimplementedError();
   }
 }
