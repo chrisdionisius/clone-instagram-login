@@ -120,7 +120,6 @@ void main() {
 
   testWidgets('Check if login button is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 4');
 
     await tester.pumpWidget(
       const MaterialApp(
@@ -154,7 +153,6 @@ void main() {
 
   testWidgets('Check Forgot Login Text', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 5');
 
     await tester.pumpWidget(
       const MaterialApp(
@@ -206,7 +204,6 @@ void main() {
 
   testWidgets('Check if Get Help text is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 6');
 
     await tester.pumpWidget(
       const MaterialApp(
@@ -261,7 +258,6 @@ void main() {
 
   testWidgets('Check if Facebook login is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 7');
 
     await tester.pumpWidget(
       const MaterialApp(
@@ -329,7 +325,6 @@ void main() {
 
   testWidgets('Check if signup text is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 8');
 
     await tester.pumpWidget(
       const MaterialApp(

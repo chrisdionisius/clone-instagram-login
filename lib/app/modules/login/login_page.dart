@@ -1,9 +1,9 @@
-import 'package:example_widget_testing/app/modules/login/components/facebook_login.dart';
-import 'package:example_widget_testing/app/modules/login/components/forgot_access.dart';
-import 'package:example_widget_testing/app/modules/login/components/or_divider.dart';
-import 'package:example_widget_testing/app/modules/login/components/signup_section.dart';
-import 'package:example_widget_testing/app/modules/login/components/login_button.dart';
-import 'package:example_widget_testing/app/modules/login/components/password_textbox.dart';
+import 'components/facebook_login.dart';
+import 'components/forgot_access.dart';
+import 'components/or_divider.dart';
+import 'components/signup_section.dart';
+import 'components/login_button.dart';
+import 'components/password_textbox.dart';
 import 'package:flutter/material.dart';
 
 import 'components/language_dropdown.dart';

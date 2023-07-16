@@ -17,9 +17,7 @@ class SignupSection extends StatelessWidget {
           height: 1,
           color: const Color(0xffA2A2A2),
         ),
-        const SizedBox(
-          height: 5,
-        ),
+        const SizedBox(height: 5),
         Row(
           key: const Key('signup_section'),
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,9 +25,7 @@ class SignupSection extends StatelessWidget {
             Text(
               "Don't have an account? ",
               key: const Key('signup_section_text'),
-              style: TextStyle(
-                fontSize: width * .040,
-              ),
+              style: TextStyle(fontSize: width * .040),
             ),
             TextButton(
               key: const Key('signup_section_button'),
@@ -41,9 +37,7 @@ class SignupSection extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              onPressed: () {
-                debugPrint('Sign Up');
-              },
+              onPressed: () => debugPrint('Sign Up'),
             ),
           ],
         ),

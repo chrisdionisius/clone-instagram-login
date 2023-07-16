@@ -14,9 +14,7 @@ class FacebookLogin extends StatelessWidget {
           height: width * .060,
           key: const Key('facebook_logo'),
         ),
-        const SizedBox(
-          width: 5,
-        ),
+        const SizedBox(width: 5),
         Text(
           'Login with facebook',
           key: const Key('facebook_login_text'),
