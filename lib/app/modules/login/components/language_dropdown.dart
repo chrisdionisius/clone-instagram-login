@@ -8,8 +8,6 @@ class LanguageDropdown extends StatefulWidget {
 }
 
 class LanguageDropdownState extends State<LanguageDropdown> {
-  String dropdownValue = 'English';
-
   @override
   Widget build(BuildContext context) {
     throw UnimplementedError();

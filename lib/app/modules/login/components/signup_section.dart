@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SignupSection extends StatelessWidget {
-  final double width;
-
-  const SignupSection({super.key, required this.width});
+  const SignupSection({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

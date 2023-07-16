@@ -24,21 +24,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: ThemeData(primarySwatch: Colors.blue),
       home: const LoginPage(),
-      routes: {
-        '/login': (context) => const LoginPage(),
-        '/home': (context) =>
-            HomePage(posts: posts, stories: stories, profileData: profileJson),
-        '/search': (context) => SearchPage(searchPosts: searchImages),
-        '/upload': (context) => const UploadPage(),
-        '/activity': (context) => const ActivityPage(),
-        '/account': (context) => AccountPage(
-            profileData: profileJson, posts: posts, stories: stories),
-        '/post': (context) => PostPage(posts: posts),
-      },
     );
   }
 }
