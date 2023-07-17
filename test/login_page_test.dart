@@ -5,13 +5,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'helper.dart';
 
 void main() {
-  int point = 10;
   final states = <MaterialState>{};
 
   testWidgets('Check if language dropdown is present', (tester) async {
     FlutterError.onError = ignoreOverflowErrors;
-    debugPrint('test 1');
-
     // choose the widget to be tested
     await tester.pumpWidget(
       const MaterialApp(home: LoginPage()),
@@ -28,7 +25,6 @@ void main() {
     try {
       expect(dropdownButton.dropdownColor, Colors.white);
     } catch (exception) {
-      point -= 1;
       debugPrint('Test-1.1 failed: $exception');
     }
 
@@ -79,7 +75,6 @@ void main() {
     try {
       expect(usernameTextboxFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-1.8 failed: $e');
     }
 
@@ -87,7 +82,6 @@ void main() {
       expect(usernameTextbox.decoration!.hintText,
           'Phone number , email or username');
     } catch (e) {
-      point -= 1;
       debugPrint('Test-1.9 failed: $e');
     }
     try {
@@ -95,11 +89,9 @@ void main() {
       expect(usernameTextbox.style!.fontSize, 15);
       // console log screen size
     } catch (e) {
-      point -= 1;
       debugPrint('Test-60 failed:');
       debugPrint(e.toString());
     }
-    debugPrint('point: $point');
   });
 
   // check if password textbox is present
@@ -126,14 +118,12 @@ void main() {
     try {
       expect(passwordTextboxFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-61 failed: $e');
     }
 
     try {
       expect(passwordTextbox.decoration!.hintText, 'Password');
     } catch (e) {
-      point -= 1;
       debugPrint('Test-62 failed: $e');
     }
     // try to input password and check if it is obscured
@@ -141,7 +131,6 @@ void main() {
       await tester.enterText(passwordTextboxFinder, 'password');
       expect(passwordTextbox.obscureText, true);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-63 failed: $e');
     }
   });
@@ -165,7 +154,6 @@ void main() {
     try {
       expect(loginButtonFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-64 failed: $e');
     }
     try {
@@ -174,7 +162,6 @@ void main() {
         const Color(0xff78c9ff),
       );
     } catch (e) {
-      point -= 1;
       debugPrint('Test-65 failed:');
       debugPrint(e.toString());
     }
@@ -199,35 +186,30 @@ void main() {
     try {
       expect(forgotAccessFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-66 failed: $e');
     }
 
     try {
       expect(forgotAccessText.data, 'Forgot your login details? ');
     } catch (e) {
-      point -= 1;
       debugPrint('Test-67 failed: $e');
     }
 
     try {
       expect(forgotAccessText.style!.fontSize, 13);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-68 failed: $e');
     }
 
     try {
       expect(forgotAccessText.style!.color, Colors.black);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-69 failed: $e');
     }
 
     try {
       expect(forgotAccessText.style!.fontWeight, FontWeight.normal);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-70 failed: $e');
     }
   });
@@ -251,21 +233,18 @@ void main() {
     try {
       expect(getHelpFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-71 failed: $e');
     }
 
     try {
       expect(getHelpText.data, 'Get help');
     } catch (e) {
-      point -= 1;
       debugPrint('Test-72 failed: $e');
     }
 
     try {
       expect(getHelpText.style!.fontSize, 13);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-73 failed: $e');
     }
 
@@ -275,14 +254,12 @@ void main() {
         const Color(0xff002588),
       );
     } catch (e) {
-      point -= 1;
       debugPrint('Test-74 failed: $e');
     }
 
     try {
       expect(getHelpText.style!.fontWeight, FontWeight.bold);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-75 failed: $e');
     }
   });
@@ -304,7 +281,6 @@ void main() {
     try {
       expect(facebookLoginFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-76 failed: $e');
     }
 
@@ -313,7 +289,6 @@ void main() {
     try {
       expect(facebookLogo, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-77 failed: $e');
     }
 
@@ -326,14 +301,12 @@ void main() {
     try {
       expect(facebookTextFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-78 failed: $e');
     }
 
     try {
       expect(facebookText.data, 'Login with facebook');
     } catch (e) {
-      point -= 1;
       debugPrint('Test-79 failed: $e');
     }
 
@@ -343,14 +316,12 @@ void main() {
         const Color(0xff1877f2),
       );
     } catch (e) {
-      point -= 1;
       debugPrint('Test-81 failed: $e');
     }
 
     try {
       expect(facebookText.style!.fontWeight, FontWeight.w800);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-82 failed: $e');
     }
   });
@@ -371,7 +342,6 @@ void main() {
     try {
       expect(signupSectionFinder, findsOneWidget);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-82 failed:');
       debugPrint(e.toString());
     }
@@ -379,7 +349,6 @@ void main() {
     try {
       expect(signupSection.children.length, 2);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-83 failed:');
       debugPrint(e.toString());
     }
@@ -387,7 +356,6 @@ void main() {
     try {
       expect(signupSection.mainAxisAlignment, MainAxisAlignment.center);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-84 failed:');
       debugPrint(e.toString());
     }
@@ -397,7 +365,6 @@ void main() {
     try {
       expect(signupText.runtimeType, Text);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-85 failed:');
       debugPrint(e.toString());
     }
@@ -405,7 +372,6 @@ void main() {
     try {
       expect(signupText.data, "Don't have an account? ");
     } catch (e) {
-      point -= 1;
       debugPrint('Test-86 failed:');
       debugPrint(e.toString());
     }
@@ -414,7 +380,6 @@ void main() {
       expect(signupText.style!.fontSize,
           tester.binding.window.physicalSize.width * .040 / 3);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-87 failed:');
       debugPrint(e.toString());
     }
@@ -424,7 +389,6 @@ void main() {
     try {
       expect(signupButton.runtimeType, TextButton);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-88 failed:');
       debugPrint(e.toString());
     }
@@ -434,7 +398,6 @@ void main() {
     try {
       expect(signupButtonText.runtimeType, Text);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-89 failed:');
       debugPrint(e.toString());
     }
@@ -442,7 +405,6 @@ void main() {
     try {
       expect(signupButtonText.data, 'Sign up');
     } catch (e) {
-      point -= 1;
       debugPrint('Test-90 failed:');
       debugPrint(e.toString());
     }
@@ -450,7 +412,6 @@ void main() {
     try {
       expect(signupButtonText.style!.color, const Color(0xff00258B));
     } catch (e) {
-      point -= 1;
       debugPrint('Test-91 failed:');
       debugPrint(e.toString());
     }
@@ -458,7 +419,6 @@ void main() {
     try {
       expect(signupButtonText.style!.fontWeight, FontWeight.bold);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-92 failed:');
       debugPrint(e.toString());
     }
@@ -467,7 +427,6 @@ void main() {
       expect(signupButtonText.style!.fontSize,
           tester.binding.window.physicalSize.width * .040 / 3);
     } catch (e) {
-      point -= 1;
       debugPrint('Test-93 failed:');
       debugPrint(e.toString());
     }
