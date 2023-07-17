@@ -8,11 +8,12 @@ import '../../data/models/profile.dart';
 import '../../widgets/bottom_navbar.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage(
-      {super.key,
-      required this.posts,
-      required this.stories,
-      required this.profileData});
+  const HomePage({
+    super.key,
+    required this.posts,
+    required this.stories,
+    required this.profileData,
+  });
   final List posts;
   final List stories;
   final Map<String, dynamic> profileData;

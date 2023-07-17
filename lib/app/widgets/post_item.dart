@@ -229,17 +229,13 @@ class PostItem extends StatelessWidget {
                       "😂",
                       style: TextStyle(fontSize: 20),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    const SizedBox(width: 10),
                     const Text(
                       key: Key('post_item_add_love_emoji_text'),
                       "😍",
                       style: TextStyle(fontSize: 20),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    const SizedBox(width: 10),
                     Icon(
                       key: const Key('post_item_add_circle_icon'),
                       Icons.add_circle,
