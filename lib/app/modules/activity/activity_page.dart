@@ -9,6 +9,7 @@ class ActivityPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        key: const Key("activity_page_appbar"),
         backgroundColor: Colors.black,
         title: const Text("Activity"),
       ),

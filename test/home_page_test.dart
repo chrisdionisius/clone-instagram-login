@@ -1,46 +1,62 @@
 import 'package:example_widget_testing/app/modules/home/components/story_item.dart';
 import 'package:example_widget_testing/app/modules/home/home_page.dart';
+import 'package:example_widget_testing/app/modules/login/login_page.dart';
 import 'package:example_widget_testing/app/widgets/post_item.dart';
 import 'package:example_widget_testing/core/values/constant/profile_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:network_image_mock/network_image_mock.dart';
-// import story_json.dart'
 import 'package:example_widget_testing/core/values/constant/story_json.dart';
 import 'package:example_widget_testing/core/theme/colors.dart';
 import 'package:example_widget_testing/core/values/constant/post_json.dart';
 
 import 'helper.dart';
-
-void checkError(int index, dynamic expected, dynamic matcher) {
-  try {
-    expect(expected, matcher);
-  } catch (e) {
-    debugPrint('Homepage Test-$index failed:');
-    debugPrint(e.toString());
-  }
-}
+import 'test_library.dart';
 
 void main() {
   testWidgets('Check if home page is present', (WidgetTester tester) async {
     FlutterError.onError = ignoreOverflowErrors;
 
+    FlutterError.onError = (details) {
+      debugPrint(
+        'Terdapat error pada kode program anda: \n${details.exceptionAsString()}',
+      );
+      throw details;
+    };
+
     await mockNetworkImagesFor(
       () => tester.pumpWidget(
         MaterialApp(
           home: HomePage(
-              posts: posts, profileData: profileJson, stories: stories),
+            posts: posts,
+            profileData: profileJson,
+            stories: stories,
+          ),
         ),
       ),
     );
     final homePageFinder = find.byType(HomePage);
-    checkError(1, homePageFinder, findsOneWidget);
+    checkByTypeFindOneWidget(homePageFinder);
   });
 
   testWidgets('Check if Home page Appbar is present',
       (WidgetTester tester) async {
     FlutterError.onError = ignoreOverflowErrors;
+
+    FlutterError.onError = (details) {
+      debugPrint(
+        'Terdapat error pada kode program anda: \n${details.exceptionAsString()}',
+      );
+      throw details;
+    };
+
+    // final originalOnError = FlutterError.onError!;
+    // FlutterError.onError = (FlutterErrorDetails details) {
+    //   debugPrint(
+    //       'FlutterError.onError was called with: ${details.exceptionAsString()}');
+    //   originalOnError(details); // call test framework's error handler
+    // };
 
     await mockNetworkImagesFor(
       () => tester.pumpWidget(

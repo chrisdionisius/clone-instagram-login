@@ -10,6 +10,7 @@ class UploadPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        key: const Key("upload_page_appbar"),
         backgroundColor: Colors.black,
         title: const Text("Upload"),
       ),

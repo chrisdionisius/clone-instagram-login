@@ -5,12 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'helper.dart';
 
 void checkError(int index, dynamic expected, dynamic matcher) {
-  try {
-    expect(expected, matcher);
-  } catch (e) {
-    debugPrint('Loginpage Test-$index failed:');
-    debugPrint(e.toString());
-  }
+  expect(expected, matcher, reason: 'Error at test-$index');
 }
 
 void main() {
@@ -86,9 +81,12 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: LoginPage()));
 
     final usernameTextboxFinder = find.byKey(const Key('username_textfield'));
+
     final usernameTextbox =
         usernameTextboxFinder.evaluate().first.widget as TextField;
+
     checkError(9, usernameTextboxFinder, findsOneWidget);
+
     checkError(10, usernameTextbox.decoration!.hintText,
         'Phone number , email or username');
     checkError(11, usernameTextbox.style!.fontSize, 15);
@@ -407,7 +405,7 @@ void main() {
     }
 
     try {
-      expect(signupButtonText.data, 'Sign up');
+      expect(signupButtonText.data, 'Sign up ');
     } catch (e) {
       point -= 1;
       debugPrint('Test-90 failed:');
