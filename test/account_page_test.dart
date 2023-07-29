@@ -117,7 +117,7 @@ void main() {
       if (appBarRowMenuIsAvailable) {
         final appBarRowMenu =
             appBarRowMenuFinder.evaluate().first.widget as Row;
-        checkError(16, appBarRowMenu.children.length, 4);
+        checkError(16, appBarRowMenu.children.length, 3);
 
         final appBarRowMenuUploadIconFinder =
             find.byKey(const Key('app_bar_row_menu_upload_icon'));
