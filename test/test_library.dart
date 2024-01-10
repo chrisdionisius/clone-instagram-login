@@ -136,3 +136,22 @@ void checkWidgetDescendantProperty(dynamic parent, dynamic finder) {
         "Penyebab: Pada widget dengan key '$parentKey' Tidak ditemukan child widget dengan key '$finderKey'",
   );
 }
+
+void checkPreviousTaskIsCompleted(
+    int index, dynamic expected, dynamic matcher) {
+  expect(expected, matcher,
+      reason: 'Task no. $index belum selesai, silahkan cek kembali\n$divider');
+}
+
+void unfinishedTaskErrorHandler(FlutterErrorDetails details) {
+  if (details.exception is FlutterError &&
+      details.exception.toString().contains('overflow')) {
+    return;
+  }
+
+  debugPrint(
+      'Anda belum menyelesaikan task-task sebelumnya, silahkan kerjakan terlebih dahulu sebelum melanjutkan');
+
+  FlutterError.presentError(details);
+  throw details.exception;
+}

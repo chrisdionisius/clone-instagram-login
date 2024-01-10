@@ -301,4 +301,58 @@ void main() {
       tester.binding.window.physicalSize.width * .040 / 3,
     );
   });
+
+  // test if login button is disabled when username and password are empty
+  testWidgets(
+      'Check if login button is disabled when username and password are empty',
+      (tester) async {
+    FlutterError.onError = customFlutterErrorHandler;
+    await tester.pumpWidget(const MaterialApp(home: LoginPage()));
+
+    final loginButtonFinder = find.byKey(
+      const Key('login_button_elevated_button'),
+    );
+
+    final loginButton =
+        loginButtonFinder.evaluate().first.widget as ElevatedButton;
+    checkByKeyFindOneWidget(loginButtonFinder);
+    checkWidgetProperty(
+      "backgroundColor",
+      loginButtonFinder,
+      loginButton.style!.backgroundColor!.resolve(states),
+      const Color(0xff78c9ff),
+    );
+  });
+
+  // test if login button is enabled when username and password are not empty
+  // testWidgets(
+  //     "Check if login button is enabled when username and password are filled",
+  //     (tester) async {
+  //   FlutterError.onError = customFlutterErrorHandler;
+  //   await tester.pumpWidget(const MaterialApp(home: LoginPage()));
+
+  //   final loginButtonFinder = find.byKey(
+  //     const Key('login_button_elevated_button'),
+  //   );
+
+  //   // find username textbox
+  //   final usernameTextboxFinder = find.byKey(const Key('username_textfield'));
+  //   // find password textbox
+  //   final passwordTextboxFinder = find.byKey(const Key('password_textfield'));
+
+  //   // enter username
+  //   await tester.enterText(usernameTextboxFinder, 'username');
+  //   // enter password
+  //   await tester.enterText(passwordTextboxFinder, 'password');
+
+  //   final loginButton =
+  //       loginButtonFinder.evaluate().first.widget as ElevatedButton;
+  //   checkByKeyFindOneWidget(loginButtonFinder);
+  //   checkWidgetProperty(
+  //     "backgroundColor",
+  //     loginButtonFinder,
+  //     loginButton.style!.backgroundColor!.resolve(states),
+  //     const Color(0xff26A9FF),
+  //   );
+  // });
 }

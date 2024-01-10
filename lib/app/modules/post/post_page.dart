@@ -16,6 +16,22 @@ class PostPage extends StatefulWidget {
 
 class PostPageState extends State<PostPage> {
   final List<Post> listPost = posts.map((e) => Post.fromJson(e)).toList();
+  void updatePostLike(id) {
+    setState(() {
+      for (var element in listPost) {
+        if (element.id == id) {
+          element.isLoved = !element.isLoved!;
+        }
+      }
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    posts = widget.posts;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +60,7 @@ class PostPageState extends State<PostPage> {
                   likedBy: post.likedBy!,
                   dayAgo: post.timeAgo!,
                   userPhoto: profile,
+                  onPressed: () => updatePostLike(post.id!),
                 );
               }).toList(),
             )

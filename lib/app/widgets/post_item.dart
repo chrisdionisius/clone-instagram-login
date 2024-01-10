@@ -13,6 +13,7 @@ class PostItem extends StatelessWidget {
   final String viewCount;
   final String dayAgo;
   final String userPhoto;
+  final VoidCallback onPressed;
 
   const PostItem({
     super.key,
@@ -25,6 +26,7 @@ class PostItem extends StatelessWidget {
     required this.viewCount,
     required this.dayAgo,
     required this.userPhoto,
+    required this.onPressed,
   });
 
   @override
@@ -77,16 +79,44 @@ class PostItem extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            key: const Key('post_item_image_container'),
-            height: 400,
-            margin: const EdgeInsets.only(bottom: 10),
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: NetworkImage(postImg),
-                fit: BoxFit.cover,
+          Stack(
+            children: [
+              Material(
+                child: InkWell(
+                  onDoubleTap: () => onPressed(),
+                  child: Container(
+                    key: const Key('post_item_image_container'),
+                    height: 400,
+                    margin: const EdgeInsets.only(bottom: 10),
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(postImg),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ),
               ),
-            ),
+              // put love icon here
+              Positioned(
+                key: const Key('post_item_love_icon_positioned'),
+                bottom: 20,
+                right: 20,
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    onTap: onPressed,
+                    child: SvgPicture.asset(
+                      key: const Key('post_item_love_icon'),
+                      isLoved
+                          ? "assets/images/loved_icon.svg"
+                          : "assets/images/love_icon.svg",
+                      width: 27,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
           Container(
             key: const Key('post_item_actions_container'),
@@ -99,12 +129,18 @@ class PostItem extends StatelessWidget {
                 Row(
                   key: const Key('post_item_actions_left_row'),
                   children: <Widget>[
-                    SvgPicture.asset(
-                      key: const Key('post_item_actions_love_icon'),
-                      isLoved
-                          ? "assets/images/loved_icon.svg"
-                          : "assets/images/love_icon.svg",
-                      width: 27,
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: onPressed,
+                        child: SvgPicture.asset(
+                          key: const Key('post_item_actions_love_icon'),
+                          isLoved
+                              ? "assets/images/loved_icon.svg"
+                              : "assets/images/love_icon.svg",
+                          width: 27,
+                        ),
+                      ),
                     ),
                     const SizedBox(
                         key: Key('post_item_actions_left_row_sized_box_1'),

@@ -23,6 +23,19 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+  List posts = [];
+  @override
+  void initState() {
+    super.initState();
+    posts = widget.posts;
+  }
+
+  void updatePostLike(index) {
+    setState(() {
+      posts[index]['isLoved'] = !posts[index]['isLoved'];
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final Profile profile = Profile.fromJson(widget.profileData);
@@ -87,15 +100,16 @@ class HomePageState extends State<HomePage> {
                 (index) {
                   return PostItem(
                     key: Key('post_item_$index'),
-                    postImg: widget.posts[index]['postImg'],
-                    profileImg: widget.posts[index]['profileImg'],
-                    name: widget.posts[index]['name'],
-                    caption: widget.posts[index]['caption'],
-                    isLoved: widget.posts[index]['isLoved'],
-                    viewCount: widget.posts[index]['commentCount'],
-                    likedBy: widget.posts[index]['likedBy'],
-                    dayAgo: widget.posts[index]['timeAgo'],
+                    postImg: posts[index]['postImg'],
+                    profileImg: posts[index]['profileImg'],
+                    name: posts[index]['name'],
+                    caption: posts[index]['caption'],
+                    isLoved: posts[index]['isLoved'],
+                    viewCount: posts[index]['commentCount'],
+                    likedBy: posts[index]['likedBy'],
+                    dayAgo: posts[index]['timeAgo'],
                     userPhoto: profile.profilePic!,
+                    onPressed: () => updatePostLike(index),
                   );
                 },
               ),

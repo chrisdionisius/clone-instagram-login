@@ -1,5 +1,7 @@
+import 'package:example_widget_testing/app/modules/activity/activity_page.dart';
 import 'package:example_widget_testing/app/modules/home/components/story_item.dart';
 import 'package:example_widget_testing/app/modules/home/home_page.dart';
+import 'package:example_widget_testing/app/modules/login/login_page.dart';
 import 'package:example_widget_testing/core/values/constant/profile_json.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,6 +12,20 @@ import 'package:example_widget_testing/core/values/constant/post_json.dart';
 import 'test_library.dart';
 
 void main() {
+  testWidgets('Check if previous task 2 is finished',
+      (WidgetTester tester) async {
+    FlutterError.onError = unfinishedTaskErrorHandler;
+    await mockNetworkImagesFor(
+      () => tester.pumpWidget(
+        const MaterialApp(
+          home: LoginPage(),
+        ),
+      ),
+    );
+    final loginPageFinder = find.byType(LoginPage);
+    checkByTypeFindOneWidget(loginPageFinder);
+  });
+
   testWidgets('Check if home page is present', (WidgetTester tester) async {
     FlutterError.onError = customFlutterErrorHandler;
     await mockNetworkImagesFor(
